@@ -1,2 +1,85 @@
-name: Hank Quinlan, Horrible Cop
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+#  
+# this theme based on  Yummy Theme
+
+# Site settings
+title: Cloud Chou's Tech Blog
+name: Cloud Chou # ex. DONGChuan
+email: 515312382@qq.com
+location: 广东省深圳市
+company: 腾讯
+github_url: https://github.com/cloudchou
+description: 专注于Android软件开发的码农,带你深入分析Android系统.目前有Android编译系统系列,源码开发环境的搭建,native binder,framework binder,应用层binder的使用实例,后续还会详细分析binder的框架层库和本地层库,另外对Handler的实现原理和它在源码中的使用也做了详细分析。
+favicon: favicon.png
+repository: cloudchou/cloudchou.github.io
+
+## Gem
+gems:
+  - jekyll-paginate
+  - jekyll-geo-pattern
+  - rouge
+  - kramdown
+  - jekyll-github-metadata
+
+# Build settings
 markdown: kramdown
+highlighter: rouge
+lsi:         false
+excerpt_separator: "\n\n"
+
+source:      .
+destination: ./_site
+
+quiet:    false
+defaults: []
+
+kramdown:
+  input: GFM
+  enable_coderay: true
+
+# Disque
+#disque: my_disque_settings # ex. httpdongchuangithubio.disqus.com
+
+# Pagination
+paginate: 8
+paginate_path: 'page:num'
+
+# Navigation. If you do not like these modules, just remove them :D
+navs:
+  -
+    href: /
+    label: 首页
+
+  -
+    href: /android
+    label: Android
+
+  -
+    href: /softdesign
+    label: 软件设计
+
+  -
+    href: /life
+    label: 生活随笔
+
+  -
+    href: /about
+    label: 关于
+
+
+# Google Analytics
+#analytics :
+#  provider : google
+#  google :
+#      tracking_id : 'tracking_id'  # ex. UA-72165600-X
+#      
+#  还需考虑的因素有:    
+#     1. 统计 
+#     2. 首页不显示生活随笔
+#     3. 分类显示
+#     4. 链接必须指向站内
