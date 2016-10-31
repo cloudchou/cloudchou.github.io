@@ -83,7 +83,7 @@
 }
 
 .site-header.site-header-nav-scrolled-ph {
-    margin-top: -160px;
+    /*margin-top: -160px;*/
 
     -webkit-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -moz-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
