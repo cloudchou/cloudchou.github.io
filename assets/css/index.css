@@ -34,3 +34,7 @@
 .site-header.site-header-nav-scrolled a:hover {
     color: #4183c4;
 }
+
+.post-list-meta .meta_data {
+    margin-right:20px !important;   
+}
