@@ -56,6 +56,17 @@
   margin-top: 0;
   margin-bottom: 15px;
 }
+
+.sidebar-wrapper h3{
+  padding: 0px 0px 0px 10px; 
+}
+
+.sidebar-wrapper .blog-list-container{
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 10px 0px 11px 30px;
+}
+
 .sidebar-wrapper .degree {
   font-size: 14px;
   margin-top: 0;
@@ -99,3 +110,4 @@
 .sidebar-wrapper .interests-list li:last-child {
   margin-bottom: 0;
 }
+
