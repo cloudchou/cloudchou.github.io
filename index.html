@@ -25,9 +25,9 @@ css: ['index.css', 'sidebar-cv.css']
                         {{ post.excerpt | strip_html | strip }}
                     </p>
                     <p class="post-list-meta">
-                        <span class="octicon octicon-calendar"></span> <span class="text">{{ post.date | date: "%Y/%m/%d" }}</span>
-                        <span class="octicon octicon-eye"></span> <span class="text">1次浏览</span>
-                        <span class="octicon octicon-comment"></span> <span class="text">1次评论</span>
+                        <span class="octicon octicon-calendar"></span> <span class="meta_data">{{ post.date | date: "%Y/%m/%d" }}</span>
+                        <span class="octicon octicon-eye"></span> <span class="meta_data">1次浏览</span>
+                        <span class="octicon octicon-comment"></span> <span class="meta_data">1次评论</span>
                     </p>
                 </li>
                 {% endfor %}
