@@ -28,7 +28,7 @@ Android单元测试系列文章的代码都可以在Github上找到: <a href='ht
 
 本节使用Volley请求来讲述如何针对这种情况进行测试，首先我们来看被测试的类VolleyRequest，它非常简单，使用了OkHttp作为传输层，请求<a href='http://www.mocky.io/v2/5597d86a6344715505576725' target='_blank' >http://www.mocky.io/v2/5597d86a6344715505576725</a>，然后将请求的数据保存下来。源代码如下所示:
  
-{% highlight java %}
+{% highlight java linenos %}
 public class VolleyRequester {
     private static final String TAG = VolleyRequester.class.getSimpleName();
     private RequestQueue mRequestQueue;
@@ -90,7 +90,7 @@ public class VolleyRequester {
 接下来我们看看如何驱动主线程轮询消息队列，测试代码如下所示:
 
 
-{% highlight java %}
+{% highlight java linenos %}
  /**
   * date 2016/7/3
   *
@@ -148,7 +148,7 @@ public class VolleyRequester {
  {% endhighlight %}
 
 
- {% highlight ruby %}
+ {% highlight ruby linenos%}
  def show
    @widget = Widget(params[:id])
    respond_to do |format|
