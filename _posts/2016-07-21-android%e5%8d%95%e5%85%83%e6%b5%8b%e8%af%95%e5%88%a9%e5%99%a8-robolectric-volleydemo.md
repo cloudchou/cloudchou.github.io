@@ -148,16 +148,6 @@ public class VolleyRequester {
  {% endhighlight %}
 
 
- {% highlight ruby linenos%}
- def show
-   @widget = Widget(params[:id])
-   respond_to do |format|
-     format.html # show.html.erb
-     format.json { render json: @widget }
-   end
- end
- {% endhighlight %}
-
 从上述代码可以看到我们可以通过获取Scheduler对象来判断消息队列中是否有消息，并调用Scheduler的runOneTask方法进行消息分发，这样就驱动了主线程进行消息轮询，执行结果如下所示:
 
 [<img src="http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo-1024x318.png" alt="volley_demo" width="1024" height="318" class="aligncenter size-large wp-image-944" srcset="http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo-1024x318.png 1024w, http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo-300x93.png 300w, http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo-768x239.png 768w, http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo-200x62.png 200w, http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo.png 1255w" sizes="(max-width: 1024px) 100vw, 1024px" />](http://www.cloudchou.com/wp-content/uploads/2016/07/volley_demo.png)
