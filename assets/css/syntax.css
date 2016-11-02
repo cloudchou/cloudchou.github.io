@@ -1,7 +1,10 @@
+.highlighter-rouge .highlight{
+  padding:8px;
+  background-color: #000000;
+}
 .highlight table td {padding: 0px;}
 .highlight table pre { margin: 0; }
-.highlight table td[class='gutter gl'] {
-  background-color: #000000;
+.highlight table td[class='gutter gl'] {  
   border-right: 1px dotted #888888;
   padding-right: 5px;
 }
@@ -10,7 +13,7 @@
 }
 
 .highlight table td[class='code'] {
-  padding-left: 5px;
+  padding-left: 0px;
 }
 .markdown-body table td{
  border: 0px solid #ddd;
@@ -25,7 +28,7 @@
 }
 
 .markdown-body .highlight td pre {
-    padding: 0px;    
+    padding: 0px;
 }
 
 .highlight .gh {
