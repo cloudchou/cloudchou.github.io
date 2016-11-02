@@ -88,6 +88,7 @@ public class VolleyRequester {
 ```
 
 接下来我们看看如何驱动主线程轮询消息队列，测试代码如下所示:
+
 ```java
  /**
   * date 2016/7/3
