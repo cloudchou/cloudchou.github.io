@@ -145,7 +145,7 @@ public class VolleyRequester {
      }
   
  }
- ```
+```
 
 
 从上述代码可以看到我们可以通过获取Scheduler对象来判断消息队列中是否有消息，并调用Scheduler的runOneTask方法进行消息分发，这样就驱动了主线程进行消息轮询，执行结果如下所示:
