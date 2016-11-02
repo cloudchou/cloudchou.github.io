@@ -1,7 +1,8 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight pre{
-  background-color:#000000;
+  background-color: #000000;
+  padding: 0px;
 }
 .highlight .gh {
   color: #999999;
