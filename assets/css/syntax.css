@@ -1,5 +1,15 @@
-.highlight table td { padding: 5px; }
+.highlight table td {padding: 0px;}
 .highlight table pre { margin: 0; }
+.highlight table td[class='gutter gl'] {
+background-color: #000000;
+}
+.markdown-body table td{
+ border: 0px solid #ddd;
+}
+.markdown-body table td pre{
+ border: 0px solid #ddd;
+}
+
 .markdown-body .highlight pre{
   background-color: #000000;
   padding: 16px;
