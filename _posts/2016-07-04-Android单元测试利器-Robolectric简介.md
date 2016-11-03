@@ -20,6 +20,7 @@ tags:
 <h2>Robolectric简介</h2>
 <p>​       以前为Android写单元测试时，只能编写基于Instrumentation Test的单元测试，也就是说只能编写在手机上执行的单元测试。只有为普通的Java工程编写的单元测试才能脱离手机单独执行，但是Android平台有很多平台专有的Api，如果实现lib，基本都会选择Android的lib工程，而不会选择普通的Java库工程。这样只好编写基于Instrumentation Test的单元测试。</p>
 <p>​     这种单元测试在执行时需要连接手机，测试时间长，还不能和持续集成服务相结合，因为持续集成服务通常在服务器上执行单元测试，不方便连接手机，或者创建模拟器。</p>
+
 <p>     此外，我们知道做单元测试，经常需要借助mock测试，mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。常用的mock框架有mockito,easymock(mockito比easymock更好用，接口更简洁),而这两种框架只支持对象级的mock,也就是说只能构建虚拟的对象，不能支持静态方法,private方法的mock, 而我们写的代码里，不可避免的会有静态工具类，很多系统类也是静态工具类。于是我们很需要象Powermock这样的mock框架，它能支持静态方法的mock。但是Powermock无法支持Android平台，因为实现静态方法的mock的原理，是替换系统的ClassLoader，并将加载的类换成mock的类，而在Android平台出于安全考虑，不允许替换系统的ClassLoader，否则会抛安全异常。所以如果使用Instrumentation test，就不能使用Powermock。</p>
 <p>​      后来Android支持了在PC上执行的单元测试，可以使用mockito,powermock等框架，但是几乎所有Android的API都需要自己去做mock，非常麻烦，比如，Context都需要自己去创建mock对象。如果有一个框架能帮我们实现Android Api的mock，我们只需要在测试时mock几个比较特殊的对象或者类，那该多好。</p>
 <p>​     Robolectric就是这样一个强大的框架，有了它，编写在PC上执行的本地单元测试就方便多了。Robolectric将Android的Api在PC上做了重新实现，它有以下特点:</p>
