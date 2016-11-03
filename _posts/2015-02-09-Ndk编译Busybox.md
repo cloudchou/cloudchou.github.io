@@ -20,6 +20,7 @@ tags:
 ---
 <h2>概述</h2>
 <p>本篇讲述如何在Linux下使用Ndk编译busybox源码，生成一个静态链接的兼容性好的可支持中文的busybox。busybox是静态链接的，所以busybox可以既在recovery模式下运行，也可以在系统模式下运行，解决busybox not found的问题。busybox兼容性好，使用ndk编译，可以在armv7和armv5的cpu上运行，解决了busybox illegal instruction的问题。另外busybox还支持中文，查看中文文件名的文件时，不会出现'?'。</p>   
+
 <p>接下来为大家介绍编译的步骤。</p>
 <h2>环境准备</h2>
 <ul>

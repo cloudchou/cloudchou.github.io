@@ -20,6 +20,8 @@ tags:
 ---
 <h2>概述</h2>
 <p>Android官网介绍Activity的启动模式时比较含糊，介绍Application，Activity，Task，Process，Thread等概念以及它们之间的关系时，也没有说得清楚。大家看了Android官网对Activity启动模式的介绍后，可能会觉得很困惑。官网介绍singleTask启动模式时，说只要启动singleTask启动模式的Activity就会新建Task，但在实际操作中，如果同一个应用的两个Activity，如果其中一个Activity的启动模式为singleTask，一个Activity的启动模式为standard，从其中一个Activity跳转到另外一个Activity，并不会新建Task。</p>
+
+
 <p>为了解除这些困惑，对Activity启动模式做了深入研究，因此写了这一系列博客，详细阐述Application，Activity，Task，Process，Thread等概念概念之间的关系，以及启动模式各自的特点，希望能对大家理解这些概念有所帮助。</p> 
 <p>本系列文章共分3篇:</p>
 <ul>

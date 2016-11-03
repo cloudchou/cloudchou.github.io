@@ -24,6 +24,7 @@ tags:
 <li><a href="http://www.cloudchou.com/android/post-760.html" target="_blank">深入理解Activity启动模式(二)--Activity,回退栈,Task之间的关系</a></li>
 <li><a href="http://www.cloudchou.com/android/post-768.html" target="_blank">深入理解Activity启动模式(三)--Activity启动模式特点</a></li>
 </ul>
+
 <h2>Activity,回退栈,Task之间的关系</h2>
  
 <p>Activity启动时ActivityManagerService会为其生成对应的ActivityRecord记录，并将其加入到回退栈(back stack)中，另外也会将ActivityRecord记录加入到某个Task中。请记住，ActivityRecord，backstack，Task都是ActivityManagerService的对象，由system_server进程负责维护，而不是由应用进程维护。</p>
