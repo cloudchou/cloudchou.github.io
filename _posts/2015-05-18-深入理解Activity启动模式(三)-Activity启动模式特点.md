@@ -17,6 +17,7 @@ tags:
   - android activity launchmode
   - android activity启动模式
 ---
+
 <p>本系列文章共分3篇:</p>
 <ul>
 <li><a href="http://www.cloudchou.com/android/post-755.html" target="_blank">深入理解Activity启动模式(一)--Activity与进程，线程的关系</a></li>
@@ -24,6 +25,7 @@ tags:
 <li><a href="http://www.cloudchou.com/android/post-768.html" target="_blank">深入理解Activity启动模式(三)--Activity启动模式特点</a></li>
 </ul>
 <h2>Activity 启动模式特点</h2>
+
  
 <p>Activity的启动模式共有4种，默认为standard，其它还有singleTop，singleTask，singleInstance，下面就这4种启动模式分别介绍它们的特点。</p>
 <ul>

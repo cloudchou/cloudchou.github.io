@@ -19,13 +19,15 @@ tags:
   - ApplicationThread
 ---
 <p>本系列博客将详细阐述Activity的启动流程，这些博客基于Cm 10.1源码研究。</p>
+<p>在介绍Activity的详细启动流程之前，先为大家介绍Activity启动时涉及到的类，这样大家可以有大概的了解，不至于在细节中迷失。</p>
+
 <ul>
 <li><a href="http://www.cloudchou.com/android/post-788.html" target="_blank">深入理解Activity启动流程(一)--Activity启动的概要流程</a></li>
 <li><a href="http://www.cloudchou.com/android/post-805.html" target="_blank">深入理解Activity启动流程(三)--Activity启动的详细流程1</a></li>
 <li><a href="http://www.cloudchou.com/android/post-815.html" target="_blank">深入理解Activity启动流程(三)--Activity启动的详细流程2</a></li>
 <li><a href="http://www.cloudchou.com/android/post-858.html" target="_blank">深入理解Activity启动流程(四)--Activity Task的调度算法</a></li>
 </ul>
-<p>在介绍Activity的详细启动流程之前，先为大家介绍Activity启动时涉及到的类，这样大家可以有大概的了解，不至于在细节中迷失。</p>
+
 <p>Activity启动时涉及到的类有IActivityManager相关类, IApplicationThread相关类, ActivityManagerService相关类。</p>
 <h2>IActivityManager相关类</h2>
 <p>点击图片可看<a href="http://www.cloudchou.com/wp-content/uploads/2015/05/IActivityManager.png" target="_blank">大图</a></p>
