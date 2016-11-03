@@ -18,9 +18,9 @@ tags:
   - Robolectric powermock
   - Robolectric测试主线程
 ---
+<p>本节讲述如何使用Robolectric+PowerMock测试需要在UI线程执行的逻辑，比如Volley框架，在后台线程中请求网络，请求完成后在UI线程里通过Listener接口通知请求完成，并传递请求回来的数据。</p>
 <p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
 <h2>使用Robolectric+Powermock测试UI线程逻辑</h2>
-<p>本节讲述如何使用Robolectric+PowerMock测试需要在UI线程执行的逻辑，比如Volley框架，在后台线程中请求网络，请求完成后在UI线程里通过Listener接口通知请求完成，并传递请求回来的数据。</p>
 <p>在使用Robolectric框架测试需要在UI线程执行的逻辑时，需要注意的是在Android平台UI线程会轮询消息队列，然后从消息队列里取出消息，并将消息分发给Handler处理，UI线程执行的是轮询消息队列的死循环。但是在Robolectric框架中运行时，UI线程默认情况下并不会轮询消息队列，而需要在测试用例代码里主动驱动UI线程从消息队列里取出消息进行分发。测试用例执行时并不在UI线程，而是在单独的线程中，所以它可以主动驱动UI线程分发消息。</p>
 <p>本节使用Volley请求来讲述如何针对这种情况进行测试，首先我们来看被测试的类VolleyRequest，它非常简单，使用了OkHttp作为传输层，请求<a href='http://www.mocky.io/v2/5597d86a6344715505576725' target='_blank' >http://www.mocky.io/v2/5597d86a6344715505576725</a>，然后将请求的数据保存下来。源代码如下所示:</p>
 ```java
