@@ -18,6 +18,8 @@ tags:
   - android binder 设计与实现
 ---
 <p>从前面的博客中我们已经学习到如何使用binder，也学习到binder的框架及原理。今天就聊聊我对android为什么使用binder作为最重要的IPC机制这个问题的想法，并总结一下先前的android binder相关博客。</p>
+
+
 <p>binder其实不是android首先提出来的IPC机制，它是基于OpenBinder来实现的。OpenBinder有许可问题，andriod不能直接使用，故此重新开发了自己的一套binder实现，基于宽松的Apache协议发布，架构与OpenBinder类似，相关信息可以参考: <a href="http://www.open-binder.org" target="_blank">http://www.open-binder.org</a>。</p>
 <h2>Android为什么选用Binder作为最重要的IPC机制</h2>
 <p>我们知道在Linux系统中，进程间的通信方式有socket，named pipe，message queue，signal，sharememory等。这几种通信方式的优缺点如下：</p>
