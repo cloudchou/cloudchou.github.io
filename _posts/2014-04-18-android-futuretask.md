@@ -18,7 +18,6 @@ tags:
   - futuretask 用法
 ---
 ## 前言
-
 研究AsyncTask的源码时遇到了FutureTask这个类，以前没用过，对它感觉很困惑，看FutureTask 的实现也不是很明白，于是重温了一遍Executor相关的类和接口，象Executor，ExecutorService，Callable接口，Runnable接口，Future接口，再研究了一下各个接口和类之间的关系，弄清楚了FutureTask的本意，现分享如下。
 
 ## Exector相关类

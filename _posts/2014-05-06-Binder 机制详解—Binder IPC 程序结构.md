@@ -19,6 +19,7 @@ tags:
 ---
 <h2>前言</h2>
 <p>通过Binder入门系列，我们已知道如何创建native binder service，framework binder service，应用层binder service，并知道如何编写framework层和应用层的客户端去调用native binder service。接下来几篇博客将为大家详细分析Binder机制，目前打算写如下几篇博客：</p>
+
 <ul>
 <li>
  <h3>1)Binder IPC 程序结构</h3>

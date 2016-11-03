@@ -19,6 +19,8 @@ tags:
 ---
 
 <h2>1.前言</h2>
+<p>上一篇介绍了natvie binder Service，本篇将介绍如何创建框架层binder service，并交给ServiceManager管理，客户端通过ServiceManager获取binder service的引用，然后测试binder service。</p>
+
 <p>Binder service入门系列：</p>  
 <ul>
 <li>Binder service入门–创建native binder service:<br/> <a href="http://www.cloudchou.com/android/post-332.html" target="_blank">http://www.cloudchou.com/android/post-332.html</a></li>
@@ -26,7 +28,7 @@ tags:
 <li>Binder service入门—框架层、应用层调用native binder service:<br/> <a href="http://www.cloudchou.com/android/post-468.html" target="_blank">http://www.cloudchou.com/android/post-468.html</a></li>
 </ul>
  
-<p>上一篇介绍了natvie binder Service，本篇将介绍如何创建框架层binder service，并交给ServiceManager管理，客户端通过ServiceManager获取binder service的引用，然后测试binder service。</p>
+
 
 <h2>2.程序构成</h2>
 <p>Framework程序的开发必须要在源码开发环境下，本示例在vendor目录下建立了子目录shuame，然后把工程放在该目录下。</p>

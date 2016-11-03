@@ -18,13 +18,15 @@ tags:
   - android 应用层 binder
 ---
 <h2>1.前言</h2>
+<p>上一篇介绍了Framework Binder Service，本篇将介绍如何创建应用层的binder service。 实际上在应用层使用binder service时，并没有直接与ServiceManager交互(应用层不能直接使用ServiceManager 类)，一般是在Service子类里覆盖onBind方法，返回新创建的Binder实体对象。应用层使用Activity作为binder service的客户端，在Activity里创建ServiceConnecttion对象，并调用bindService方法绑定service，在ServiceConnection的onServiceConnected方法将接收到的IBinder对象转化为接口对象，然后再通过这个接口对象调用binder service的接口方法。</p>
+
 <p>Binder service入门系列：</p>  
 <ul>
 <li>Binder service入门–创建native binder service:<br/> <a href="http://www.cloudchou.com/android/post-332.html" target="_blank">http://www.cloudchou.com/android/post-332.html</a></li>
 <li>Binder service入门—Framework binder service:<br/> <a href="http://www.cloudchou.com/android/post-447.html" target="_blank">http://www.cloudchou.com/android/post-447.html</a></li>
 <li>Binder service入门—框架层、应用层调用native binder service:<br/> <a href="http://www.cloudchou.com/android/post-468.html" target="_blank">http://www.cloudchou.com/android/post-468.html</a></li>
 </ul> 
-<p>上一篇介绍了Framework Binder Service，本篇将介绍如何创建应用层的binder service。 实际上在应用层使用binder service时，并没有直接与ServiceManager交互(应用层不能直接使用ServiceManager 类)，一般是在Service子类里覆盖onBind方法，返回新创建的Binder实体对象。应用层使用Activity作为binder service的客户端，在Activity里创建ServiceConnecttion对象，并调用bindService方法绑定service，在ServiceConnection的onServiceConnected方法将接收到的IBinder对象转化为接口对象，然后再通过这个接口对象调用binder service的接口方法。</p>
+
 
 <h2>2.程序构成</h2>
 <p>程序在应用开发环境下编译。</p>
