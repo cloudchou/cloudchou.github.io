@@ -21,18 +21,18 @@ tags:
 <p>通过Binder入门系列，我们已知道如何创建native binder service，framework binder service，应用层binder service，并知道如何编写framework层和应用层的客户端去调用native binder service。接下来几篇博客将为大家详细分析Binder机制，目前打算写如下几篇博客：</p>
 <ul>
 <li>
- <h3>1)\tBinder IPC 程序结构</h3>
+ <h3>1)Binder IPC 程序结构</h3>
  <p>介绍binder service的服务端进程，客户端进程，ServiceManager进程三者之间的关系</p>
 </li>
 <li>
- <h3>2)\tBinder的系统架构</h3>
+ <h3>2)Binder的系统架构</h3>
  <p>介绍Binder系统架构的层次划分，每个层次的作用，并详细介绍系统架构的适配层和核心库。</p>
 </li>
 <li>
- <h3>3)\tBinder的本地库框架</h3> 
+ <h3>3)Binder的本地库框架</h3> 
 </li>
 <li>
- <h3>4)\tBinder的Java层框架</h3> 
+ <h3>4)Binder的Java层框架</h3> 
 </li>
 </ul>
 <h2>Binder IPC 程序结构</h2>

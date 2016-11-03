@@ -16,9 +16,12 @@ tags:
   - Robolectric
   - Robolectric asset资源加载
 ---
-<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
 <h2>Android asset资源加载demo</h2>
 <p>先前有提到，本地单元测试里可以配置AndroidManifest, assests等目录，然而并没有什么卵用，读取的AndroidManifest还是主模块的AndroidManifest和assets，要想使用特殊的assets或者AndroidManifest必须自己写TestRunner,本节就讲解如何加载自定义的AndroidManifest和assets资源。</p>
+
+<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
+
+
 <p>首先实现一个自定义的从RobolectricGradleTestRunner集成的TestRunner:</p>
 ```java
 //可以修改AndroidManifest和asset的TestRunner

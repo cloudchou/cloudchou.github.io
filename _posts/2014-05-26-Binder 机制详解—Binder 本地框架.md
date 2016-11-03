@@ -18,6 +18,7 @@ tags:
   - Binder 机制详解
 ---
 <p>上一篇博客介绍了Binder系统架构，其中说到Binder框架，本地层和Java层各自有一套实现。本篇博客将介绍Binder本地框架。</p> 
+
 <h2>Binder本地框架</h2>
 <p>本地Binder框架包含以下类(frameworks/native/libs/binder)：</p>
 <p>RefBase， IInterface，BnInterface，BpInterface，BpRefBase，Parcel 等等</p>
@@ -25,93 +26,93 @@ tags:
 <a href="http://www.cloudchou.com/wp-content/uploads/2014/05/native_binde_framework.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2014/05/native_binde_framework.png" alt="native_binde_framework" width="987" height="851" class="aligncenter size-full wp-image-549" /></a>
 <ul>
 <li>
- <h3>1)\tRefBase类(frameworks/native/include/utils/RefBase.h)</h3>
+ <h3>1)RefBase类(frameworks/native/include/utils/RefBase.h)</h3>
  <p>引用的基类，android本地代码里采用了智能指针，有强指针，也有弱指针。不过不用纠结于这些细节。</p>
 </li>
 <li>
- <h3>2)\tIInterface(frameworks/native/include/binder/IInterface.h)</h3>
+ <h3>2)IInterface(frameworks/native/include/binder/IInterface.h)</h3>
  <p>自定义的binder service接口必须继承自IInterface(如ITestService)，它的onAsBinder方法为抽象方法，该方法的实现在BpInterface和BnInterface模版类里。</p>
 </li>
 <li>
- <h3>3)\tBpRefBase(frameworks/native/include/binder/Binder.h)</h3>
+ <h3>3)BpRefBase(frameworks/native/include/binder/Binder.h)</h3>
  <p>客户端间接用到该类，用于保存IBinder指针，remote()方法即返回IBinder指针。</p>
 </li>
 <li>
- <h3>4)\tITestService</h3>
+ <h3>4)ITestService</h3>
  <p>声明的binder service接口，在该接口里会声明所有提供的服务方法(使用纯虚函数)，并用宏DECLARE_META_INTERFACE进行声明，这样会添加静态字段descriptor，静态方法asInterface，虚方法getInterfaceDescriptor，以及构造函数和析构函数。另外只需要使用IMPLEMENT_META_INTERFACE(INTERFACE, NAME)来即可定义用宏DECLARE_META_INTERFACE声明的这些方法和字段。</p>
  <p>DECLARE_META_INTERFACE宏的源码如下所示：</p>
 ```cpp
-#define DECLARE_META_INTERFACE(INTERFACE)                           \\
-    static const android::String16 descriptor;                      \\
-    static android::sp<I##INTERFACE> asInterface(                   \\
-            const android::sp<android::IBinder>& obj);              \\
-    virtual const android::String16& getInterfaceDescriptor() const;\\
-    I##INTERFACE();                                                 \\
+#define DECLARE_META_INTERFACE(INTERFACE)                           \
+    static const android::String16 descriptor;                      \
+    static android::sp<I##INTERFACE> asInterface(                   \
+            const android::sp<android::IBinder>& obj);              \
+    virtual const android::String16& getInterfaceDescriptor() const;\
+    I##INTERFACE();                                                 \
     virtual ~I##INTERFACE(); 
 ``` 
 <p>若使用DECLARE_META_INTERFACE(TestService); 则会扩展为:</p> 
 ```cpp
-static const android::String16 descriptor;                       \\
-static android::sp<ITestService> asInterface(                    \\
-            const android::sp<android::IBinder>& obj);           \\
-virtual const android::String16& getInterfaceDescriptor() const; \\
-ITestService();                                                  \\
+static const android::String16 descriptor;                       \
+static android::sp<ITestService> asInterface(                    \
+            const android::sp<android::IBinder>& obj);           \
+virtual const android::String16& getInterfaceDescriptor() const; \
+ITestService();                                                  \
 virtual ~ITestService();
 ```
 <p>宏函数IMPLEMENT_META_INTERFACE(INTERFACE, NAME)的源码如下所示：</p>
 
 ```cpp
-#define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)              \\
-    const android::String16 I##INTERFACE::descriptor(NAME);    \\
-    const android::String16&                                   \\
-            I##INTERFACE::getInterfaceDescriptor() const {     \\
-        return I##INTERFACE::descriptor;                       \\
-    }                                                          \\
-    android::sp<I##INTERFACE> I##INTERFACE::asInterface(       \\
-            const android::sp<android::IBinder>& obj)          \\
-    {                                                          \\
-        android::sp<I##INTERFACE> intr;                        \\
-        if (obj != NULL) {                                     \\
-            intr = static_cast<I##INTERFACE*>(                 \\
-                obj->queryLocalInterface(                      \\
-                        I##INTERFACE::descriptor).get());      \\
-            if (intr == NULL) {                                \\
-                intr = new Bp##INTERFACE(obj);                 \\
-            }                                                  \\
-        }                                                      \\
-        return intr;                                           \\
-    }                                                          \\
-    I##INTERFACE::I##INTERFACE() { }                           \\
-    I##INTERFACE::~I##INTERFACE() { }                          \\
+#define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)              \
+    const android::String16 I##INTERFACE::descriptor(NAME);    \
+    const android::String16&                                   \
+            I##INTERFACE::getInterfaceDescriptor() const {     \
+        return I##INTERFACE::descriptor;                       \
+    }                                                          \
+    android::sp<I##INTERFACE> I##INTERFACE::asInterface(       \
+            const android::sp<android::IBinder>& obj)          \
+    {                                                          \
+        android::sp<I##INTERFACE> intr;                        \
+        if (obj != NULL) {                                     \
+            intr = static_cast<I##INTERFACE*>(                 \
+                obj->queryLocalInterface(                      \
+                        I##INTERFACE::descriptor).get());      \
+            if (intr == NULL) {                                \
+                intr = new Bp##INTERFACE(obj);                 \
+            }                                                  \
+        }                                                      \
+        return intr;                                           \
+    }                                                          \
+    I##INTERFACE::I##INTERFACE() { }                           \
+    I##INTERFACE::~I##INTERFACE() { }                          \
 ```
 <p>若使用IMPLEMENT_META_INTERFACE(TestService, "android.TestServer.ITestService")则会被替换成:</p>
 ```cpp
 const android::String16 
-    ITestService::descriptor("android.TestServer.ITestService"); \\
-    const android::String16&                                     \\
-            ITestService::getInterfaceDescriptor() const {       \\
-        return ITestService::descriptor;                         \\
-    }                                                            \\
-    android::sp<ITestService> ITestService::asInterface(         \\
-            const android::sp<android::IBinder>& obj)            \\
-    {                                                            \\
-        android::sp<ITestService> intr;                          \\
-        if (obj != NULL) {                                       \\
-            intr = static_cast<ITestService*>(                   \\
-                obj->queryLocalInterface(                        \\
-                        ITestService::descriptor).get());        \\
-            if (intr == NULL) {                                  \\
-                intr = new BpTestService(obj);                   \\
-            }                                                    \\
-        }                                                        \\
-        return intr;                                             \\
-    }                                                            \\
-    ITestService::ITestService() { }                             \\
-    ITestService::~ITestService() { }                            \\
+    ITestService::descriptor("android.TestServer.ITestService"); \
+    const android::String16&                                     \
+            ITestService::getInterfaceDescriptor() const {       \
+        return ITestService::descriptor;                         \
+    }                                                            \
+    android::sp<ITestService> ITestService::asInterface(         \
+            const android::sp<android::IBinder>& obj)            \
+    {                                                            \
+        android::sp<ITestService> intr;                          \
+        if (obj != NULL) {                                       \
+            intr = static_cast<ITestService*>(                   \
+                obj->queryLocalInterface(                        \
+                        ITestService::descriptor).get());        \
+            if (intr == NULL) {                                  \
+                intr = new BpTestService(obj);                   \
+            }                                                    \
+        }                                                        \
+        return intr;                                             \
+    }                                                            \
+    ITestService::ITestService() { }                             \
+    ITestService::~ITestService() { }                            \
 ```
 </li>
 <li>
- <h3>5)\tBpInterface(frameworks/native/include/binder/Binder.h)</h3>
+ <h3>5)BpInterface(frameworks/native/include/binder/Binder.h)</h3>
  <p>该类是一个模版类，需和某个继承自IIterface的类结合使用。</p>
  <p>它的声明如下所示：</p> 
 ```cpp
@@ -129,7 +130,7 @@ protected:
  
 </li>
 <li>
- <h3>6)\tBnInterface(frameworks/native/include/binder/IInterface.h)</h3>
+ <h3>6)BnInterface(frameworks/native/include/binder/IInterface.h)</h3>
  <p>该类也是一个模版类，需和某个继承自IIterface的类结合使用。</p>
  <p>它的声明如下所示：</p>
 ```cpp

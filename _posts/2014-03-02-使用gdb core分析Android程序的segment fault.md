@@ -18,10 +18,11 @@ tags:
   - android segmentation fault
 ---
 <p>我们开发Android本地可执行程序时，常常遇见segment fault错误，若程序比较复杂，使用打日志的方式很难查到出错的根本原因，若能让程序出core，然后用gdb 调试该core文件将能很快定位出错的代码位置，并能看到运行时出错代码的运行栈，这样能迅速定位。</p>
+
 <h2>1. core dump</h2>
 <p>那什么是core dump呢，core dump是指当程序运行崩溃的瞬间，内核会抛出当时该程序进程的内存详细情况，存储在一个core.xxx的文件中，Android默认设置情况下，程序运行出错后是不会出core的，需要进行以下设置：</p>
-<ul>
-<li>
+
+
  <h3>1) 设置core文件的存储位置</h3>
  <p>echo "/data/coredump/core.%e.%p" >  /proc/sys/kernel/core_pattern </p>
  <p>表示存储在 /data/coredump 下，%e表示程序的名字，%p是指进程号， 示例：core.adbd.235</p>
@@ -33,8 +34,8 @@ on init
   write  /proc/sys/kernel/core_pattern /data/coredump/core.%e.%p
   ... 
 ```  
-</li>
-<li>
+
+
  <h3>2) 设置core文件大小限制</h3>
  <p>默认情况下系统限制core文件大小为0，此时程序运行出错无法出core,若使用ulimit -c命令查看，可以看到结果是0，这时候可用ulimit -c unlimited 设置core文件大小无限制，此时运行程序出错后，便可以出Core了。但是请<span style="color:red">注意</span>使用ulimit命令修改core限制，<span style="color:red">只针对此次会话有效</span>，也就是说你使用adb shell 设置好后，在另外一个终端里运行adb shell后，再运行程序出错，还是不会出Core。</p>
  <p>若想对所有会话都有效，需要在系统启动时，就进行这样的设置。但是ulimit是一个shell内置命令，故此不能在init.rc里添加调用ulimit命令的服务来解决该问题，此时有三种解决方法，修改现有init.rc里的服务对应程序的源代码，或者修改init的源代码，或者编写一个本地程序，并在init.rc添加一个服务调用该程序，取消core文件大小限制的关键代码如下：</p>
@@ -45,8 +46,8 @@ lim.rlim_max=RLIM_INFINITY;\t
 setrlimit(RLIMIT_CORE,&lim); //出core
 ```
 <p>你可以将该段代码添加到你的本地程序里或者init源代码，或者服务程序源代码里。这样系统启动后，程序异常退出时，便会出core。此种方式对调试adbd程序非常有帮助。</p>
-</li>
-</ul>
+
+
 <h2>2. 使用gdb调试出Core的程序</h2>
 <p>调试出现segment fault的本地程序时，别使用优化后的程序，这样使用gdb调试时不能看到源代码，都是一堆的二进制代码。Android源代码开发时，优化前的程序位于目录out/target/product/m7cdug/symbols下(m7cdwg是某个产品)，你可以在该目录下使用find 命令查找你要调试的程序: find -name "progname"。</p>
 <p>程序出core后，使用adb pull将core文件从手机上拉下来，再将该文件放置到源代码开发主机的优化前程序所处目录下。如果你在编译Android源代码，并使用了source  build/envsetup.sh，此时在编译源代码的终端可以运行arm-eabi-gdb命令来调试core文件，若找不到该命令，先将该命令所在目录添加到PATH目录。调试core文件的命令：arm-eabi-gdb 被调试程序 core，示例:</p>

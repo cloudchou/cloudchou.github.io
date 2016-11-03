@@ -40,8 +40,8 @@ tags:
 <p>TestAc: 测试binder service的客户端</p>
 
 <h3>实现应用层 binder service的步骤</h3>
-<ul>
-<li>1)    使用aidl定义binder service接口ICloudManager</li>
+
+1)    使用aidl定义binder service接口ICloudManager
 ```text
 package com.cloud.test;
 interface ICloudManager{
@@ -177,7 +177,7 @@ public interface ICloudManager extends android.os.IInterface {
 
 <p>由此可见应用层使用binder service实际上和framework使用binder service是非常类似的，只是在应用层使用binder service时，只需编写aidl，开发工具可帮我们自动编译生成java源码文件，该源文件里包含接口，binder service实体类(抽象类，接口方法还未实现)，binder service引用类的源码。</p>
 
-<li>2)    实现Service</li>
+2)    实现Service
 ```java
 public class CloudService extends Service {
   private final static String TAG = CloudService.class.getSimpleName();
@@ -223,7 +223,7 @@ public class CloudService extends Service {
 }
 ```
 
-<li>3)    实现Client</li>
+3)    实现Client
 ```java
 public class TestAc extends Activity {
     private static final String TAG = TestAc.class.getSimpleName();
@@ -305,7 +305,7 @@ public class TestAc extends Activity {
 }
 ```
 
-<li>4)    AndroidManifest.xml，声明程序组件Activity和Service</li>
+4)    AndroidManifest.xml，声明程序组件Activity和Service
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cloud.test"
@@ -338,9 +338,9 @@ public class TestAc extends Activity {
 ```
 
 
-</ul>
+
 <h2>4.测试</h2>
-<li>运行apk程序：</li>
+运行apk程序：
 <a href="http://www.cloudchou.com/wp-content/uploads/2014/04/app_test.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2014/04/app_test-1024x229.png" alt="app_test" width="1024" height="229" class="alignnone size-large wp-image-465" /></a>
 
 

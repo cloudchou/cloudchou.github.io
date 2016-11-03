@@ -59,72 +59,35 @@ Executor相关类如下图所示:
     
     它是创建ExecutorService的简单工厂，另外还有一个将Runnable转成Callable的适配接口。new系列方法大多是封装了一个ThreadPoolExecutor。
 
-<div class="wp_syntax">
-  <table>
-    <tr>
-      <td class="line_numbers">
-        <pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-</pre>
-      </td>
-      
-      <td class="code">
-        <pre class="java" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> ExecutorService newFixedThreadPool<span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">int</span> nThreads, 
-                            ThreadFactory threadFactory<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-    <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">new</span> ThreadPoolExecutor<span style="color: #009900;">&#40;</span>nThreads, nThreads,
-                                  0L, TimeUnit.<span style="color: #006633;">MILLISECONDS</span>,
-                                  <span style="color: #000000; font-weight: bold;">new</span> LinkedBlockingQueue<span style="color: #339933;">&lt;</span>Runnable<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>,
-                                  threadFactory<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="color: #009900;">&#125;</span>
-&nbsp;
-<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> ExecutorService newSingleThreadExecutor<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-    <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">new</span> FinalizableDelegatedExecutorService
-        <span style="color: #009900;">&#40;</span><span style="color: #000000; font-weight: bold;">new</span> ThreadPoolExecutor<span style="color: #009900;">&#40;</span><span style="color: #cc66cc;">1</span>, <span style="color: #cc66cc;">1</span>,
-                                0L, TimeUnit.<span style="color: #006633;">MILLISECONDS</span>,
-                                <span style="color: #000000; font-weight: bold;">new</span> LinkedBlockingQueue<span style="color: #339933;">&lt;</span>Runnable<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="color: #009900;">&#125;</span>
-&nbsp;
-<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> ExecutorService newCachedThreadPool<span style="color: #009900;">&#40;</span>
-                          ThreadFactory threadFactory<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-    <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">new</span> ThreadPoolExecutor<span style="color: #009900;">&#40;</span><span style="color: #cc66cc;"></span>, <span style="color: #003399;">Integer</span>.<span style="color: #006633;">MAX_VALUE</span>,
-                                  60L, TimeUnit.<span style="color: #006633;">SECONDS</span>,
-                                  <span style="color: #000000; font-weight: bold;">new</span> SynchronousQueue<span style="color: #339933;">&lt;</span>Runnable<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>,
-                                  threadFactory<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="color: #009900;">&#125;</span>
-&nbsp;
-<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> ScheduledExecutorService newScheduledThreadPool<span style="color: #009900;">&#40;</span>
-        <span style="color: #000066; font-weight: bold;">int</span> corePoolSize, ThreadFactory threadFactory<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-    <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">new</span> ScheduledThreadPoolExecutor<span style="color: #009900;">&#40;</span>corePoolSize, threadFactory<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="color: #009900;">&#125;</span></pre>
-      </td>
-    </tr>
-  </table>
-</div>
+```java
+    public static ExecutorService newFixedThreadPool(int nThreads, 
+                                ThreadFactory threadFactory) {
+        return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>(),
+                                      threadFactory);
+    }
+
+    public static ExecutorService newSingleThreadExecutor() {
+        return new FinalizableDelegatedExecutorService
+            (new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>()));
+    }
+
+    public static ExecutorService newCachedThreadPool(
+                              ThreadFactory threadFactory) {
+        return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                      60L, TimeUnit.SECONDS,
+                                      new SynchronousQueue<Runnable>(),
+                                      threadFactory);
+    }
+
+    public static ScheduledExecutorService newScheduledThreadPool(
+            int corePoolSize, ThreadFactory threadFactory) {
+        return new ScheduledThreadPoolExecutor(corePoolSize, threadFactory);
+    }
+```
 
 ## FutureTask相关类
 

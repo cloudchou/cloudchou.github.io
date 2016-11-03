@@ -61,7 +61,7 @@ tags:
 <h2>环境测试Demo</h2>
 <p>   我们首先来看使用Roblectric测试SharedPreference和Environment的demo。</p>
 <p>​    首先需要在build.gradle里添加对Robolectric的依赖:</p>
-<pre  lang="groovy" line="1">
+```groovy
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     testCompile "junit:junit:4.12"

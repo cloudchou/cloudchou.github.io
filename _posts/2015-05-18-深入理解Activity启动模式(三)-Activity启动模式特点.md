@@ -28,7 +28,7 @@ tags:
 <p>Activity的启动模式共有4种，默认为standard，其它还有singleTop，singleTask，singleInstance，下面就这4种启动模式分别介绍它们的特点。</p>
 <ul>
 <li>
- <h3>1)\tstandard模式</h3>
+ <h3>1)standard模式</h3>
  <p>standard模式的Activity可以有多个ActivityRecord加入不同的task，同一个task也可存在多个ActivityRecord，并且ActivityRecord还可相邻。</p>
  <p>假设Activity A的启动模式为standard，那么可能存在如下图所示的回退栈:</p>
 <a href="http://www.cloudchou.com/wp-content/uploads/2015/05/standard.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2015/05/standard.png" alt="standard" width="194" height="279" class="aligncenter size-full wp-image-778" /></a>
@@ -40,7 +40,7 @@ tags:
 
 </li>
 <li>
- <h3>2)\tsingleTop模式</h3>
+ <h3>2)singleTop模式</h3>
  <p>singleTop模式与standard模式比较相似，singleTop模式的Activity可以有多个ActivityRecord加入不同的task，同一个task也可存在多个ActivityRecord,但是同一个task的ActivityRecord不可以相邻。</p>
  <p>假设Activity A的启动模式为singleTop，那么如下图所示的回退栈就是不合理的:</p>
  <a href="http://www.cloudchou.com/wp-content/uploads/2015/05/singleTop_bad.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2015/05/singleTop_bad.png" alt="singleTop_bad" width="213" height="310" class="aligncenter size-full wp-image-776" /></a>
@@ -51,7 +51,7 @@ tags:
  <p>假设Activity A和Activity B在同一个应用app1里，A是入口Activity，A可跳转至Activity B，B的启动模式为singleTop。此时已从A跳转至B，通知栏有一个启动B的通知，点击通知后，就出现上述情况。</p>
 </li>
 <li>
- <h3>3)\tsingleTask模式</h3>
+ <h3>3)singleTask模式</h3>
  <p>singleTask模式和standard模式，singleTop模式区别很大，singleTask模式的Activity在整个回退栈只可以有一个ActivityRecord，也就是说它只能属于某一个task，不可在多个task里存在ActivityRecord。但是在这个task里可以有其它Activity的ActivityRecord。</p>
  <p>假设Activity A的启动模式为singleTask，那么如下图所示的回退栈就是不合理的:</p>
  <a href="http://www.cloudchou.com/wp-content/uploads/2015/05/singleTask_bad.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2015/05/singleTask_bad.png" alt="singleTask_bad" width="172" height="249" class="aligncenter size-full wp-image-774" /></a>
@@ -72,7 +72,7 @@ tags:
  <p>假设某个应用有两个Activity A和Activity B，Activity A已启动，Activity B的启动模式为singleTask，Activity B还从未启动过，在AndroidManifest.xml里没有给这两个Activity设置特殊的taskAffinity。此时从Activity A跳转至Activity B，那么Activity B的ActivityRecord会放在Activity A的ActivityRecord所在的task里。</p>
 </li>
 <li>
- <h3>4)\tsingleInstance模式</h3>
+ <h3>4)singleInstance模式</h3>
  <p>该启动模式和singleTask类似，singleInstance模式的Activity在整个回退栈只可以有一个ActivityRecord，也就是说它只能属于某一个task，不可在多个task里存在ActivityRecord，并且它所在的task不可再有其它Activity的ActivityRecord，即使是同一个应用内的其它Activity，也不可有它们的AcvitityRecord。</p>
  <p>假设Activity A的启动模式为singleInstance，那么如下图所示的回退栈就是不合理的:</p>
  <a href="http://www.cloudchou.com/wp-content/uploads/2015/05/singleInstance_bad.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2015/05/singleInstance_bad.png" alt="singleInstance_bad" width="197" height="283" class="aligncenter size-full wp-image-771" /></a>
@@ -83,15 +83,15 @@ tags:
  
 <p>启动Activity时，有时需要查看回退栈，看是否有和这个Activity相关的task。Activity和某个task相关，有两种情况(假设Activity为A，相关的task为task1):</p>
 <ul>
-<li>1)\t如果A的启动模式为singleInstance，那么task1只能包含1个ActivityRecord，并且ActivityRecord对应的Activity必须是A </li>
-<li>2)\tA的启动模式不是singleInstance，A的taskAffinity属性和task1的taskAffinity属性必须一样。Task的taskAffinity属性由它包含的第1个ActivityRecord的taskAffinity属性决定。</li>
+<li>1)如果A的启动模式为singleInstance，那么task1只能包含1个ActivityRecord，并且ActivityRecord对应的Activity必须是A </li>
+<li>2)A的启动模式不是singleInstance，A的taskAffinity属性和task1的taskAffinity属性必须一样。Task的taskAffinity属性由它包含的第1个ActivityRecord的taskAffinity属性决定。</li>
 </ul>
 
 <h2>注意</h2>
 <ul>
-<li>1)\t从Launcher程序启动应用时，会先查找所有task，看是否有相关task，如果已有相关task，则会将相关task移动到回退栈的栈顶，然后显示栈顶Activity。查找相关task时，需看task是否和应用的入口Activity相关，入口Activity是指在AndroidManifest.xml里声明IntentFilter时，注明category为android.intent.category.LAUNCHER的Activity。如果入口Activity的启动模式为singleTask，不仅会将相关task移动到回退栈的栈顶，还会将该task里位于入口Activity之上的其它ActivityRecord全部清除掉</li>
-<li>2)\t通过最近应用程序，切换应用时，会直接将应用图标对应的task移动到回退栈的栈顶，这样即使task里有singleTask类型的ActivityRecord，在它之上的ActivityRecord也不会被清除</li>
-<li>3)\t可以通过adb shell dumpsys activity activties查看系统task情况</li>
+<li>1)从Launcher程序启动应用时，会先查找所有task，看是否有相关task，如果已有相关task，则会将相关task移动到回退栈的栈顶，然后显示栈顶Activity。查找相关task时，需看task是否和应用的入口Activity相关，入口Activity是指在AndroidManifest.xml里声明IntentFilter时，注明category为android.intent.category.LAUNCHER的Activity。如果入口Activity的启动模式为singleTask，不仅会将相关task移动到回退栈的栈顶，还会将该task里位于入口Activity之上的其它ActivityRecord全部清除掉</li>
+<li>2)通过最近应用程序，切换应用时，会直接将应用图标对应的task移动到回退栈的栈顶，这样即使task里有singleTask类型的ActivityRecord，在它之上的ActivityRecord也不会被清除</li>
+<li>3)可以通过adb shell dumpsys activity activties查看系统task情况</li>
 </ul>
 
 <h2>思考问题</h2>

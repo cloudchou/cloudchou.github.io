@@ -54,19 +54,19 @@ intent = new Intent(Intent.ACTION_MAIN);
 //Activity类
 public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
  if (mParent == null) {
-\tInstrumentation.ActivityResult ar =
-\t                mInstrumentation.execStartActivity(
-\t                    this, mMainThread.getApplicationThread(), mToken, this,
-\t                    intent, requestCode, options);
-\t   if (ar != null) {
-\t                mMainThread.sendActivityResult(
-\t                    mToken, mEmbeddedID, requestCode, ar.getResultCode(),
-\t                    ar.getResultData());
-\t   } 
-\t//...   
+Instrumentation.ActivityResult ar =
+                mInstrumentation.execStartActivity(
+                    this, mMainThread.getApplicationThread(), mToken, this,
+                    intent, requestCode, options);
+   if (ar != null) {
+                mMainThread.sendActivityResult(
+                    mToken, mEmbeddedID, requestCode, ar.getResultCode(),
+                    ar.getResultData());
+   } 
+//...   
  }else{
   //...
- } \t   
+ }    
 ```
 <p>Instrumentation调用ActivityManagerProxy对象的startActivity方法启动Activity，而ActivityManagerProxy只是ActivityManagerService对象在应用进程的一个代理对象，ActivityManagerProxy最终调用ActivityManagerService的startActvity方法启动Activity。</p>
 ```java

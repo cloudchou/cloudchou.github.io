@@ -18,8 +18,9 @@ tags:
   - Robolectric3.0 not support local net
 ---
 <p>Robolectric官网在介绍它的配置时，指出可以在build.gradle里配置robolectric的依赖仓库，也就是说在脚本里可以声明Robolectric相关jar包的下载地址，比如android-all-5.0.0_r2-robolectric-1.jar，利用这个特性，我们可以将下载地址设置为局域网的组件仓库，这样可以缓存这些jar包，否则如果每次都从sonatype仓库下的话会非常慢。</p>
+
 <p>设置的脚本如下所示:</p>
-```java
+```groovy
 android {
   testOptions {
     unitTests.all {

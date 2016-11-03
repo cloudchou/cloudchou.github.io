@@ -17,9 +17,12 @@ tags:
   - Roblectric+powermock
   - Robolectric+powermock 实例
 ---
-<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
 <h2>PowerMock测试Demo</h2>
 <p>前面的章节中有提到过Robolectric 3.0不能直接针对非Android Sdk的类做Shadow，必须使用PowerMock或者mockito处理，PowerMock支持静态函数的mock，还支持partialmock，也就是说mock某个类时，不需要为这个类的所有函数做mock处理，只需针对需要改变行为的函数进行mock就可以了，其它函数执行时还是mock之前的逻辑。这点非常有用，否则每次使用powermock或者mockito时需要针对某个类的所有函数都要处理，如果函数比较多，那会相当麻烦。</p>
+
+<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
+
+
 <p>Robolectric 3.1已支持针对非AndroidSdk的类做Shadow，但是不支持Powermock。因为创建Shadow类的方式，需要写的代码比PowerMock方式多很多，所以我们建议使用PowerMock+Robolectric3.0+mockito做单元测试。</p>
 <p>接下来我们看如何使用PowerMock做Partial Mock。</p>
 <p>首先看一下要被mock的类的代码:</p>

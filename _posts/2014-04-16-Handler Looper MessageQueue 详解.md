@@ -273,20 +273,20 @@ final boolean enqueueMessage(Message msg, long when) {
 
 <h3>Message</h3>
 <p>Message表示消息，它的字段有：</p>
-<li>1)\t<span style="color:red">what</span> 用来区分不同消息，这个是用户自定义的，通常会用常量来区分</li>
-<li>2)\targ1  arg1 和 arg2 是一种轻量级的传递数据的方式</li>
-<li>3)\targ2 </li>
-<li>4)\tobj 任意对象，但是使用Messenger跨进程传递Message时不能为null</li>
-<li>5)\treplyTo 可选的Messenger对象，被谁接收</li>
-<li>6)\tflags 一些flag FLAG_IN_USE FLAG_ASYNCHRONOUS  FLAGS_TO_CLEAR_ON_COPY_FROM的组合</li>
-<li>7)\t<span style="color:red">when</span> 处理Message的时间</li>
-<li>8)\t<span style="color:red">data </span> 携带的bundle格式的数据</li>
-<li>9)\t<span style="color:red">target </span> 关联的Handler对象，处理Message时会调用它分发处理Message对象</li>
-<li>10)\tcallback 关联的Runnable对象，Handler分发处理Message时会优先执行callback的run方法</li>
-<li>11)\t<span style="color:red">next</span> Message队列里的下一个Message对象</li>
-<li>12)\tsPoolSync 消息池的同步锁</li>
-<li>13)\tsPool 消息池，创建好的Message对象用完了会放到消息池，下次再次创建Message对象时会从消息池里取出Message对象，只有当消息池没有任何Message对象时才会新建Message对象，这样节省了内存占用。</li>
-<li>14)\tsPoolSize 消息池当前消息个数</li>
+<li>1)<span style="color:red">what</span> 用来区分不同消息，这个是用户自定义的，通常会用常量来区分</li>
+<li>2)arg1  arg1 和 arg2 是一种轻量级的传递数据的方式</li>
+<li>3)arg2 </li>
+<li>4)obj 任意对象，但是使用Messenger跨进程传递Message时不能为null</li>
+<li>5)replyTo 可选的Messenger对象，被谁接收</li>
+<li>6)flags 一些flag FLAG_IN_USE FLAG_ASYNCHRONOUS  FLAGS_TO_CLEAR_ON_COPY_FROM的组合</li>
+<li>7)<span style="color:red">when</span> 处理Message的时间</li>
+<li>8)<span style="color:red">data </span> 携带的bundle格式的数据</li>
+<li>9)<span style="color:red">target </span> 关联的Handler对象，处理Message时会调用它分发处理Message对象</li>
+<li>10)callback 关联的Runnable对象，Handler分发处理Message时会优先执行callback的run方法</li>
+<li>11)<span style="color:red">next</span> Message队列里的下一个Message对象</li>
+<li>12)sPoolSync 消息池的同步锁</li>
+<li>13)sPool 消息池，创建好的Message对象用完了会放到消息池，下次再次创建Message对象时会从消息池里取出Message对象，只有当消息池没有任何Message对象时才会新建Message对象，这样节省了内存占用。</li>
+<li>14)sPoolSize 消息池当前消息个数</li>
 <p>管理Message对象时，Android采用了消息池，可以有效节省内存，有两个方法会操作消息池，obtain和recycle，源码如下：</p>
 ```java
 public static Message obtain() { //获得Message对象
@@ -343,14 +343,14 @@ public Handler(Callback callback, boolean async) {
 我们通常会象下面这样使用Handler：
 ```java
 Handler h = new Handler() {
-\t@Override
-\tpublic void handleMessage(Message msg) {
-\t\tswitch (msg.what) {
-\t\tcase TEST:
-\t\t\t
-\t\t\tbreak;
-\t\t}
-\t}
+@Override
+public void handleMessage(Message msg) {
+switch (msg.what) {
+case TEST:
+
+break;
+}
+}
 };
 h.sendEmptyMessage(h. obtainMessage(TEST));
 ```

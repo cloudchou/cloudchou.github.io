@@ -18,25 +18,27 @@ tags:
   - android 框架层调用底层binder service
 ---
 <h2>1.前言</h2>
+<p>上一篇介绍了如何创建应用层binder service，本篇将综合先前介绍的native binder service，framework binder service，应用层binder service等知识，讲述如何使用native 的client，framework层的client，应用层的client测试native binder service。</p>
+
 <p>Binder service入门系列：</p>  
 <ul>
 <li>Binder service入门–创建native binder service:<br/> <a href="http://www.cloudchou.com/android/post-332.html" target="_blank">http://www.cloudchou.com/android/post-332.html</a></li>
 <li>Binder service入门—Framework binder service:<br/> <a href="http://www.cloudchou.com/android/post-447.html" target="_blank">http://www.cloudchou.com/android/post-447.html</a></li>
 <li>Binder service入门—应用层binder service: <br/><a href="http://www.cloudchou.com/android/post-458.html" target="_blank">http://www.cloudchou.com/android/post-458.html</a></li>
 </ul>   
-<p>上一篇介绍了如何创建应用层binder service，本篇将综合先前介绍的native binder service，framework binder service，应用层binder service等知识，讲述如何使用native 的client，framework层的client，应用层的client测试native binder service。</p>
+
 
 <h2>2.程序构成</h2>
 <p>因为编译native的binder service，framework层的client都需要在源码环境下编译，故此本篇讲述的工程需要在源码环境下编译。</p>
 <p>整个工程可以在github上下载： </p>
 <p><a href="https://github.com/cloudchou/NativeBinderJavaClientDemo" target="_blank">https://github.com/cloudchou/NativeBinderJavaClientDemo</a></p>
 <p>程序由4个部分组成：</p>
-<ul>
-<li>1)    native_bserver 创建并注册native binder service的本地服务端</li>
-<li>2)    native_bclient 测试native binder service的本地客户端</li>
-<li>3)    fclient和fclient.jar测试native binder service的框架层客户端</li>
-<li>4)    NativeBinderServiceTest 测试native  binder service的应用层客户端</li>
-</ul>
+
+1)    native_bserver 创建并注册native binder service的本地服务端
+2)    native_bclient 测试native binder service的本地客户端
+3)    fclient和fclient.jar测试native binder service的框架层客户端
+4)    NativeBinderServiceTest 测试native  binder service的应用层客户端
+
 
 <h2>3.程序源码构成</h2>
 <p>源程序目录结构如下所示：</p>
@@ -44,8 +46,8 @@ tags:
 <p>顶层Android.mk只是简单包含各个子目录的Android.mk，BServer目录存放本地服务端和本地客户端源码，FClient存放框架层客户端源码，NatviveBinderServiceTest存放应用层客户端源码。</p>
 
 <h3>本地服务端和本地客户端</h3>
-<ul>
-<li>
+
+
  <h3>1)    BServer的Android.mk源码如下所示：</h3>
 ```make
 LOCAL_PATH := $(call my-dir)
@@ -77,8 +79,8 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
  ```
   
-</li>
-<li>
+
+
  <h3>2)    binder service接口ICloudManager(ICloudManager.h)： </h3>
 ```cpp
 namespace android
@@ -109,8 +111,8 @@ namespace android
 }
 ```
   
-</li>
-<li>
+
+
  <h3>3)    实现实现ICloudManager接口的方法(ICloudManager.cpp)</h3>
 ```cpp
 namespace android
@@ -119,8 +121,8 @@ namespace android
 }
 ```
  
-</li>
-<li>
+
+
  <h3>4)    实现服务端(TestServer.cpp)</h3>
 ```cpp
  namespace android
@@ -207,8 +209,8 @@ sp<IServiceManager> sm = defaultServiceManager();
 }
 ```
  
-</li>
-<li>
+
+
  <h3>5)    实现客户端(TestClient.cpp)</h3>
 ```cpp
 namespace android
@@ -270,12 +272,12 @@ sp<ICloudManager> cs = interface_cast<ICloudManager>(binder);
 }
 ```
  
-</li>
-</ul> 
+
+ 
 
 <h3>框架层客户端</h3>
-<ul>
-<li>
+
+
  <h3>1)    Android.mk</h3>
 ```make
 LOCAL_PATH:= $(call my-dir)
@@ -294,8 +296,8 @@ LOCAL_MODULE_CLASS := UTILITY_EXECUTABLES
 LOCAL_SRC_FILES := fclient
 include $(BUILD_PREBUILT)
 ```
-</li>
-<li>
+
+
  <h3>2)    定义接口类(ICloudManager.java)</h3>
 ```java
 public interface ICloudManager extends IInterface {
@@ -313,8 +315,8 @@ public interface ICloudManager extends IInterface {
     static final int TRANSACTION_add = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
 }
 ```
-</li>
-<li>
+
+
  <h3>3)    定义接口代理类(CloudManagerProxy.java)</h3>
 ```java
 public class CloudManagerProxy implements ICloudManager {
@@ -383,8 +385,8 @@ public class CloudManagerProxy implements ICloudManager {
     }
 }
 ```
-</li>
-<li>
+
+
  <h3>4)    客户端(FClient.java)</h3>
 ```java
 public class FClient { 
@@ -410,8 +412,8 @@ public class FClient {
     }
 }
 ```
-</li>
-<li>
+
+
  <h3>5)    客户端脚本fclient</h3>
 ```bash
 # Script to start "am" on the device, which has a very rudimentary
@@ -421,14 +423,14 @@ base=/system
 export CLASSPATH=$base/framework/fclient.jar
 exec app_process $base/bin com.cloud.test.FClient "$@"
 ```
-</li>
-</ul>
+
+
 
 <h3>应用层客户端</h3>
 <p>先前我们有讲到在应用层是不能直接使用ServiceManager这个类的，因为Sdk并未包含该类，应用层只能通过bind service去使用binder service，但是我们的native service并不是使用应用层的Service子类创建的，这样看来貌似应用层不能使用native的binder service。</p>
 <p>这里介绍一个技巧，其实我们的应用在运行时可以使用系统隐藏的类，比如ServiceManager，SystemProperties，只是编译时Sdk并未提供这些类，我们若使用这些类就无法编译。但是我们可以创建这些类所在的包，并创建这些类，在类里定义我们要使用的那些方法，我们就可以通过编译了。比如ServiceManager这个类，我们就可以为之创建android.os这个package，并在这个package下创建ServiceManager类，定义我们需要的方法getService。也许读者会担心运行时使用的ServiceManger类就是我们创建的ServiceManager类，但实际上运行时使用的ServiceManager类是framework.jar里的ServiceManager类，这是因为classloader在查找类时优先使用系统的类。</p>
-<ul>
-<li>
+
+
 <h3>1)    Android.mk</h3>
 ```make
 LOCAL_PATH:= $(call my-dir)
@@ -449,8 +451,8 @@ include $(BUILD_PACKAGE)
 # Use the following include to make our test apk.
 include $(call all-makefiles-under,$(LOCAL_PATH)) 
 ```
-</li>
-<li>
+
+
 <h3>2)    我们创建的ServiceManager源码</h3>
 ```java
 public class ServiceManager {
@@ -461,8 +463,8 @@ public class ServiceManager {
 
 } 
 ```
-</li>
-<li>
+
+
 <h3>3)    定义接口ICloudManager</h3>
 ```java
 public interface ICloudManager extends IInterface {
@@ -479,8 +481,8 @@ public interface ICloudManager extends IInterface {
     static final int TRANSACTION_add = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
 } 
 ```
-</li>
-<li>
+
+
 <h3>4)    定义代理类CloudManagerProxy</h3>
 ```java
 public class CloudManagerProxy implements ICloudManager {
@@ -550,8 +552,8 @@ public class CloudManagerProxy implements ICloudManager {
 
 } 
 ```
-</li>
-<li>
+
+
 <h3>5)    测试用的Activity(TestAc.java)</h3>
 ```java
 public class TestAc extends Activity {
@@ -631,8 +633,8 @@ public class TestAc extends Activity {
     }
 } 
 ```
-</li>
-</ul>
+
+
 
 <h2>4.测试</h2>
 <p>上传程序：</p> 

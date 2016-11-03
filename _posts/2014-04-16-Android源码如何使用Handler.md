@@ -22,30 +22,31 @@ tags:
 <h2>前言</h2>
 <p><a href="http://www.cloudchou.com/android/post-388.html" target="_blank">前一篇</a>文章我们详细分析了Handler机制的实现，这一篇会给大家介绍Android源码里如何使用Handler。这里会介绍以下4个例子：</p>
 <li>
- <h3>1)\tActivityThread</h3>
+ <h3>1)ActivityThread</h3>
  <p>Activity运行在ActivityThread里，ActivityThread就是Android应用开发时所说的UI线程，或者说是主线程，它使用了Handler机制。</p>
 </li>
 <li>
- <h3>2)\tAsyncTask</h3>
+ <h3>2)AsyncTask</h3>
  <p>AsyncTask的实现也用到了Handler机制。</p>
 </li>
 <li>
- <h3>3)\tHandlerThread</h3>
+ <h3>3)HandlerThread</h3>
  <p>HandlerThread继承自Thread，它的run方法里会创建Looper，并调用Looper.loop方法进入死循环，我们可以用HandlerThread实现worker thread。</p>
 </li>
 <li>
- <h3>4)\tIntentService</h3>
+ <h3>4)IntentService</h3>
  <p>IntentService的实现使用了HandlerThread，将客户端的请求交给了HanderThread，这样不会阻塞主线程，也就不会产生ANR问题。</p>
 </li>
+
 <h2>1. ActivityThread使用Handler</h2>
 <p>ActivityThread源码位于：frameworks/base/core/java/android/app/ActivityThread.java</p>
-<li>1)\t准备Looper </li>
+<li>1)准备Looper </li>
 ```java
 public static void main(String[] args) {
   //...
   //创建主线程的Looper实例和MessageQueue实例
   Looper.prepareMainLooper();
-  //创建ActivityThread\t\t\t
+  //创建ActivityThread
   ActivityThread thread = new ActivityThread();
   //交给ActivityManagerService管理
   thread.attach(false);
@@ -64,7 +65,7 @@ public static void main(String[] args) {
   throw new RuntimeException("Main thread loop unexpectedly exited");
 }
 ```
-<li>2)\t创建Handler</li>
+<li>2)创建Handler</li>
 ```java
 final H mH = new H();
 private class H extends Handler {
@@ -111,7 +112,7 @@ private class H extends Handler {
  //...
 }
 ```
-<li>3)\t使用Handler发送消息</li>
+<li>3)使用Handler发送消息</li>
 ```java
 private void queueOrSendMessage(int what, Object obj, int arg1, int arg2) {
   synchronized (this) {
@@ -130,7 +131,7 @@ private void queueOrSendMessage(int what, Object obj, int arg1, int arg2) {
 <p>ActivityThread里的Schedule系列方法都是调用queueOrSendMessage发送Message，然后在Handler里处理消息</p>
 
 <h2>2. AsyncTask使用Handler</h2>
-<li>1)\tHandler子类</li>
+<li>1)Handler子类</li>
 ```java
 private static class InternalHandler extends Handler {
   @SuppressWarnings({"unchecked", "RawUseOfParameterizedType"})
@@ -152,7 +153,7 @@ private static final InternalHandler sHandler = new InternalHandler();
 ```
 
 
-<li>2)\t初始化</li>
+<li>2)初始化</li>
 <p>关联loope和MessageQueue</p>
 ```java
 public static void init() {
@@ -161,7 +162,7 @@ public static void init() {
 ```
 <p>实际上不执行sHandler.getLooper()也可以正常关联looper和MessageQueue，在ui线程里创建AsyncTask时，就会初始化好sHandler。</p>
 
-<li>3)\t发送消息</li>
+<li>3)发送消息</li>
 ```java
 private Result postResult(Result result) {
   @SuppressWarnings("unchecked")
@@ -218,7 +219,7 @@ public abstract class IntentService extends Service {
     *ServiceHandler使用HandlerThread的Looper
     *没有使用主线程的Looper
     *故此它的handleMessage方法在HandlerThread里执行，而非主线程
-\t\t*/
+*/
     private final class ServiceHandler extends Handler {
         public ServiceHandler(Looper looper) {
             super(looper);
@@ -285,7 +286,7 @@ public abstract class IntentService extends Service {
         return mRedelivery ? START_REDELIVER_INTENT : START_NOT_STICKY;
     }
 
-\t\t//退出
+//退出
     @Override
     public void onDestroy() {
         mServiceLooper.quit();

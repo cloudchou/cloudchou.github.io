@@ -24,7 +24,7 @@ tags:
 <a href="http://www.cloudchou.com/wp-content/uploads/2014/05/binder-layer.jpg" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2014/05/binder-layer.jpg" alt="binder layer" width="330" height="290" class="aligncenter size-full wp-image-514" /></a>
 <ul>
 <li>
- <h3>(1)\t驱动层</h3>
+ <h3>(1)驱动层</h3>
 <p>正如大家所知道的，Binder机制是需要Linux内核支持的，Android因此添加了binder驱动，binder 设备节点为/dev/binder，主设备号为10，binder 驱动程序在内核中的头文件和代码路径如下：</p>
 <p>kernel/drivers/staging/binder.h</p>
 <p>kernel/drivers/staging/binder.c</p>
@@ -35,7 +35,7 @@ tags:
 <p>适配层使用binder驱动时使用了内存映射技术，故此进程间传输数据时只需拷贝一次，传统的IPC需拷贝两次，因此使用binder可大大提高IPC通信效率。</p>
 </li>
 <li>
- <h3>(2)\t驱动适配层</h3>
+ <h3>(2)驱动适配层</h3>
  <p>主要是IPCThreadState.cpp和ProcessState.cpp,源码位于frameworks/native/libs/binder</p>
 <p>这两个类都采用了单例模式，主要负责和驱动直接交互。</p>
 <p>ProcessState负责打开binder设备，进行一些初始化设置并做内存映射</p>
@@ -44,14 +44,14 @@ tags:
 
 </li>
 <li>
- <h3>(3)\tBinder核心框架层</h3>
+ <h3>(3)Binder核心框架层</h3>
 <p>Binder核心框架主要是IBinder及它的两个子类，即BBinder和BpBinder，分别代表了最基本的服务端及客户端。</p>
 <p>binder service服务端实体类会继承BnInterface，而BnInterface会继承自BBinder，服务端可将BBinder对象注册到servicemananger进程。</p>
 <p>客户端程序和驱动交互时只能得到远程对象的句柄handle，它可以调用调用ProcessState的getStrongProxyForHandle函数，利用句柄handle建立BpBinder对象，然后将它转为IBinder指针返回给调用者。这样客户端每次调用IBinder指针的transact方法，其实是执行BpBinder的transact方法。</p>
 
 </li>
 <li>
- <h3>(4)\tBinder框架层</h3>
+ <h3>(4)Binder框架层</h3>
 <p>本地Binder框架层包含以下类(frameworks/native/libs/binder)：</p>
 <p>RefBase，IInterface，BnInterface，BpInterface，BpRefBase，Parcel 等等</p>
 <p>Java框架层包含以下类(frameworks/base/core/java/android/os):</p>
@@ -62,7 +62,7 @@ tags:
 </li>
 
 <li>
- <h3>(5)\tBinder 服务和客户端实现</h3>
+ <h3>(5)Binder 服务和客户端实现</h3>
  <p>从Binder入门系列我们也知道，binder service服务端和binder 客户端都有native和Java之分，Java层服务端从Binder继承并实现服务接口，Java层客户端直接实现服务接口即可，而本地服务端需继承自BnInterface，本地客户端继承自BpInterface。</p>
  <p>后续博客分析本地binder框架和Java层 binder框架时会给出更详尽的类关系。</p>
 </li>
@@ -404,8 +404,8 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
     IF_LOG_COMMANDS() {
         alog << "Our err: " << (void*)err << ", write consumed: "
             << bwr.write_consumed << " (of " << mOut.dataSize()
-\t\t\t<< "), read consumed: " 
-\t\t\t<< bwr.read_consumed << endl;
+<< "), read consumed: " 
+<< bwr.read_consumed << endl;
     }
 
     if (err >= NO_ERROR) {
@@ -662,7 +662,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 <a href="http://www.cloudchou.com/wp-content/uploads/2014/05/IBinder.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2014/05/IBinder-1024x514.png" alt="IBinder" width="1024" height="514" class="aligncenter size-large wp-image-531" /></a>
 <ul>
 <li>
- <h3>1)\tIBinder(frameworks/native/include/binder/IBinder.h)</h3>
+ <h3>1)IBinder(frameworks/native/include/binder/IBinder.h)</h3>
  <p>IBinder有两个直接子类，代表服务端的BBinder和代表客户端的BpBinder。</p>
 <p>重要方法说明(以下方法均是抽象方法)：</p>
 <p>queryLocalInterface 用于检查IBinder是否实现了descriptor指定的接口，若实现了则会返回它的指针</p>
@@ -671,7 +671,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 
 </li>
 <li>
- <h3>2)\tBBinder(frameworks/native/include/binder/Binder.h)</h3>
+ <h3>2)BBinder(frameworks/native/include/binder/Binder.h)</h3>
  <p>BBinder代表binder service服务端，最终声明的binder 服务类将间接从该类继承，它实现了IBinder声明的transact方法，转调留给子类实现onTrasact的方法。</p>
 ```cpp
  status_t BBinder::transact(
@@ -698,7 +698,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 ```
 </li>
 <li>
- <h3>3)\tBpBinder(frameworks/native/include/binder/BpBinder.h)</h3>
+ <h3>3)BpBinder(frameworks/native/include/binder/BpBinder.h)</h3>
  <p>客户端使用servicemananger查询服务时实际上是先得到一个句柄handle，然后ProcessState的getStrongProxyForHandle函数里利用句柄handle建立BpBinder对象，再转为IBinder指针，代理类便是通过该指针向服务端请求。</p>
 </li>
 </ul>

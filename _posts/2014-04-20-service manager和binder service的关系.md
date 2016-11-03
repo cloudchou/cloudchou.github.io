@@ -18,9 +18,10 @@ tags:
   - service manager android
 ---
 <p>service manager是所有binder service的管理者，但它并不是这些binder service的创建者。</p>
+
 <p>这些binder service有些是init进程启动的服务创建的，有些是system_server进程创建的，但是service manager会管理所有binder service的信息，方便client查询以及调用。</p>
 <p>service manager是由init进程直接启动的，在init.rc里有 </p>
-```makefile
+```text
 service servicemanager /system/bin/servicemanager
     class core
     user system
@@ -31,9 +32,10 @@ service servicemanager /system/bin/servicemanager
     onrestart restart surfaceflinger
     onrestart restart drm
 ```   
+
 <p>ActivityManagerService,PackageManagerService等由system_server进程启动的binder service实际上并没有单独的进程，它们只是system_server的一个子线程。init进程会启动surface flinger，media server, drmserver等服务，在这些服务里会创建binder service，并注册到service manager。</p>
 <p>init.rc声明了surfaceflinger：</p>
-```makefile
+```text
 service surfaceflinger /system/bin/surfaceflinger
     class main
     user system

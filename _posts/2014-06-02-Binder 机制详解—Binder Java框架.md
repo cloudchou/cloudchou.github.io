@@ -18,6 +18,7 @@ tags:
   - Binder 机制详解
 ---
 <p>上一篇博客介绍了 Binder本地框架层，本篇博客将介绍Binder的java层框架。</p>
+
 <h2>Binder的java层框架</h2>
 <p>Binder的Java框架层包含以下类(frameworks/base/core/java/android/os):IBinder，Binder，IInterface，ServiceManagerNative，ServiceManager，BinderInternal，IServiceManager，ServiceManagerProxy。</p>
 <p>Binder的Java框架层部分方法的实现在本地代码里，源码位于frameworks/base/core/jni。</p>
@@ -29,7 +30,7 @@ tags:
 <h3>重要数据结构</h3>
 <ul>
 <li>
- <h3>1)\tgBinderOffsets，代表android.os.Binder 类</h3>
+ <h3>1)gBinderOffsets，代表android.os.Binder 类</h3>
 ```cpp
 static struct bindernative_offsets_t
 {
@@ -46,7 +47,7 @@ static struct bindernative_offsets_t
 ``` 
 </li>
 <li>
- <h3>2)\tgBinderInternalOffsets，代表com.android.internal.os.BinderInternal类</h3>
+ <h3>2)gBinderInternalOffsets，代表com.android.internal.os.BinderInternal类</h3>
 ```cpp
 static struct binderinternal_offsets_t
 {
@@ -60,7 +61,7 @@ static struct binderinternal_offsets_t
 
 </li>
 <li>
- <h3>3)\tbinderproxy_offsets_t，代表android.os.BinderProxy类</h3>
+ <h3>3)binderproxy_offsets_t，代表android.os.BinderProxy类</h3>
 ```cpp
 static struct binderproxy_offsets_t
 {
@@ -82,7 +83,7 @@ static struct binderproxy_offsets_t
 ``` 
 </li>
 <li>
- <h3>4)\tJavaBBinder和JavaBBinderHolder</h3>
+ <h3>4)JavaBBinder和JavaBBinderHolder</h3>
 <p>JavaBBinder和JavaBBinderHolder相关类类图如下所示(若看不清，请点击看大图)，JavaBBinder继承自本地框架的BBinder，代表binder service服务端实体，而JavaBBinderHolder保存JavaBBinder指针，Java层Binder的mObject保存的是JavaBBinderHolder指针的值，故此这里用聚合关系表示。BinderProxy的mObject保存的是BpBinder对象指针的值，故此这里用聚合关系表示。</p>
 <a href="http://www.cloudchou.com/wp-content/uploads/2014/06/binder_java_jni.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2014/06/binder_java_jni-1024x687.png" alt="binder_java_jni" width="1024" height="687" class="aligncenter size-large wp-image-561" /></a>
 </li>
@@ -91,7 +92,7 @@ static struct binderproxy_offsets_t
 <h3>重要函数</h3>
 <ul>
 <li>
- <h3>1)\tjavaObjectForIBinder 将本地IBinder对象转为Java层的IBinder对象，实际类型是BinderProxy</h3>
+ <h3>1)javaObjectForIBinder 将本地IBinder对象转为Java层的IBinder对象，实际类型是BinderProxy</h3>
 ```cpp
 jobject javaObjectForIBinder(JNIEnv* env, const sp<IBinder>& val)
 {
@@ -169,7 +170,7 @@ jobject javaObjectForIBinder(JNIEnv* env, const sp<IBinder>& val)
  
 </li>
 <li>
- <h3>2)\tibinderForJavaObject 将Java层的IBinder对象转为本地IBinder对象</h3>
+ <h3>2)ibinderForJavaObject 将Java层的IBinder对象转为本地IBinder对象</h3>
 ```cpp
 sp<IBinder> ibinderForJavaObject(JNIEnv* env, jobject obj)
 {

@@ -18,9 +18,11 @@ tags:
   - Powermock 多线程
   - Robolectric 多线程
 ---
-<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
 <h2>多线程测试Demo</h2>
 <p>本节使用Robolectric+powermock测试多线程的场景。</p>
+
+<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
+
 <p>首先，我们看一下，被测试的类的源码，HelloThread的init方法主要功能是启动一个线程，然后在新线程内部做实际初始化，实际初始化完毕后将初始化状态标志为成功或者失败，在本场景里将状态标志为失败。在非多线程的场景中，我们进行单元测试时，通常直接对被测试函数的返回值做校验，而多线程场景中，因为实际功能在另外一条线程里完成，所以对函数的返回值做校验并没有实际价值，但是我们可以通过校验日志来看执行效果。</p>
 <p>被测试的类的源码如下所示:</p>
 ```java

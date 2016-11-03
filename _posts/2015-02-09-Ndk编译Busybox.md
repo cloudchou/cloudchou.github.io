@@ -24,11 +24,11 @@ tags:
 <h2>环境准备</h2>
 <ul>
 <li>
-  <h3>1)\t准备源代码</h3>
+  <h3>1)准备源代码</h3>
   <p>使用CM 10.1源码目录下external/busybox的源代码即可，为了不影响其它代码的编译，可以将其拷贝至1个单独的目录，如~/work/busybox</p>
 </li>
 <li>
-  <h3>2)\t准备编译环境</h3>
+  <h3>2)准备编译环境</h3>
   <p>下载Ndk</p>
   <a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank"> http://developer.android.com/tools/sdk/ndk/index.html </a>
   <p>解压Ndk包</p>
@@ -38,7 +38,7 @@ $./android-ndk-r10d-linux-x86_64.bin
 ```  
 </li>
 <li>
-  <h3>3)\t将编译工具链目录添加至PATH环境变量</h3>
+  <h3>3)将编译工具链目录添加至PATH环境变量</h3>
 ```bash
 export PATH=$PATH:/home/cloud/softwares/android-ndk-r10d/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
 ```
@@ -49,13 +49,13 @@ export PATH=$PATH:/home/cloud/softwares/android-ndk-r10d/toolchains/arm-linux-an
 <p>修改.config里的CONFIG_SYSROOT变量和CONFIG_EXTRA_CFLAGS变量</p>
 <ul>
 <li>
-  <h3>1)\tCONFIG_SYSROOT变量</h3>
+  <h3>1)CONFIG_SYSROOT变量</h3>
   <p>CONFIG_SYSROOT变量指定ndk系统目录，例如我们可以配制成:</p>
   <p>CONFIG_SYSROOT="/home/cloud/softwares/android-ndk-r10d/platforms/android-15/arch-arm"</p>
   <p>当然我们也可以指定成别的Android版本，比如android-14</p>
 </li>
 <li>
-  <h3>2)\tCONFIG_EXTRA_CFLAGS变量</h3>
+  <h3>2)CONFIG_EXTRA_CFLAGS变量</h3>
   <p>CONFIG_EXTRA_CFLAGS变量指定编译变量，原来.config文件的设置如下所示：</p>
 ```cpp
 CONFIG_EXTRA_CFLAGS="-DANDROID -D__ANDROID__ -DSK_RELEASE -nostdlib 

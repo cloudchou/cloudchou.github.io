@@ -18,6 +18,7 @@ tags:
   - framework binder详解
 ---
 <p>上一篇博客介绍了《<a href="http://www.cloudchou.com/android/post-558.html" target="_blank">Binder 机制详解—Binder Java框架</a>》，本篇博客将分析Java层Binder框架通信原理。</p>
+
 <h2>Java层如何获得IServiceManager对象</h2>
 <p>我们先看一下Java层的IServiceManager相关类的类图：(若看不清，请点击看大图)</p>
 <a href="http://www.cloudchou.com/wp-content/uploads/2014/06/IServiceManager_class_diagram.png" target="_blank"><img src="http://www.cloudchou.com/wp-content/uploads/2014/06/IServiceManager_class_diagram-1024x690.png" alt="IServiceManager_class_diagram" width="1024" height="690" class="aligncenter size-large wp-image-575" /></a>
