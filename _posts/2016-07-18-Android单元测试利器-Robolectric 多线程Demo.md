@@ -18,16 +18,11 @@ tags:
   - Powermock 多线程
   - Robolectric 多线程
 ---
-<a href="http://www.cloudchou.com/tag/android%e5%8d%95%e5%85%83%e6%b5%8b%e8%af%95" title="View all posts in Android单元测试" target="_blank" class="tags">Android单元测试</a>系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> 
-
-## 多线程测试Demo
-
-本节使用Robolectric+powermock测试多线程的场景。
-
-首先，我们看一下，被测试的类的源码，HelloThread的init方法主要功能是启动一个线程，然后在新线程内部做实际初始化，实际初始化完毕后将初始化状态标志为成功或者失败，在本场景里将状态标志为失败。在非多线程的场景中，我们进行单元测试时，通常直接对被测试函数的返回值做校验，而多线程场景中，因为实际功能在另外一条线程里完成，所以对函数的返回值做校验并没有实际价值，但是我们可以通过校验日志来看执行效果。
-
-被测试的类的源码如下所示:
-
+<p>Android单元测试系列文章的代码都可以在Github上找到: <a href='https://github.com/cloudchou/RobolectricDemo' target='_blank' >https://github.com/cloudchou/RobolectricDemo</a> </p>
+<h2>多线程测试Demo</h2>
+<p>本节使用Robolectric+powermock测试多线程的场景。</p>
+<p>首先，我们看一下，被测试的类的源码，HelloThread的init方法主要功能是启动一个线程，然后在新线程内部做实际初始化，实际初始化完毕后将初始化状态标志为成功或者失败，在本场景里将状态标志为失败。在非多线程的场景中，我们进行单元测试时，通常直接对被测试函数的返回值做校验，而多线程场景中，因为实际功能在另外一条线程里完成，所以对函数的返回值做校验并没有实际价值，但是我们可以通过校验日志来看执行效果。</p>
+<p>被测试的类的源码如下所示:</p>
 ```java
 public class HelloThread {
 
@@ -130,10 +125,6 @@ public class HelloThreadTest {
 
 }
 ```
- 
-
-执行结果如下所示:
-
-[<img src="http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo.png" alt="robolectr_thread_demo" width="941" height="349" class="aligncenter size-full wp-image-939" srcset="http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo.png 941w, http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo-300x111.png 300w, http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo-768x285.png 768w, http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo-200x74.png 200w" sizes="(max-width: 941px) 100vw, 941px" />](http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo.png)
-
-可以看到使用PowerMock 对 多线程程序做校验是非常方便的
+<p>执行结果如下所示:</p>
+<p><a href="http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo.png"><img src="http://www.cloudchou.com/wp-content/uploads/2016/07/robolectr_thread_demo.png" alt="robolectr_thread_demo" width="941" height="349" class="aligncenter size-full wp-image-939" /></a></p>
+<p> 可以看到使用PowerMock 对 多线程程序做校验是非常方便的</p> 
