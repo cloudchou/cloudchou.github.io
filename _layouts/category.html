@@ -1,0 +1,49 @@
+---
+layout: default
+menu: home
+css: ['index.css', 'sidebar-cv.css']
+---
+
+{% include jumbotron.html %}
+
+<section class="content container">
+
+    <div class="row">
+
+        <!-- Post List -->
+        <div class="col-md-8">
+
+            <ol class="post-list">
+                {% for post in paginator.posts %}
+                <li class="post-list-item">
+                    <h2 class="post-list-title">
+                        <a  href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                    </h2>
+                    <p class="post-list-description">
+                        {{ post.excerpt | strip_html | strip }}
+                    </p>
+                    <p class="post-list-meta">
+                        <span class="octicon octicon-calendar"></span> <span class="meta_data">{{ post.date | date: "%Y/%m/%d" }}</span>
+                        
+                    </p>
+                </li>
+                {% endfor %}
+            </ol>
+ 
+            <!-- Pagination -->
+            {% include pagination.html %}
+
+            <!-- Comments -->
+            {% include disqus-comments.html %}
+
+        </div>
+
+
+        <div class="col-md-4">
+            {% include sidebar-cv.html %}
+        </div>
+
+    </div>
+
+</section>
+
