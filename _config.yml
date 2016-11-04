@@ -73,16 +73,8 @@ navs:
     label: 首页
 
   -
-    href: /android
-    label: Android
-
-  -
-    href: /softdesign
-    label: 软件设计
-
-  -
-    href: /life
-    label: 生活随笔
+    href: /bloglist
+    label: 博客纪事
 
   -
     href: /about
