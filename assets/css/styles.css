@@ -101,6 +101,10 @@
     margin-bottom: 15px;
 }
 
+.sidebar-wrapper .container-block {
+    padding: 15px 30px 0px 30px;
+}
+
 .sidebar-wrapper .list-unstyled li {
     margin-bottom: 15px;
 }
