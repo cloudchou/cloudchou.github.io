@@ -58,6 +58,11 @@
   margin-bottom: 15px;
 }
 
+.sidebar-wrapper .list-unstyled li {
+    margin-bottom: 15px;
+}
+
+
 .sidebar-wrapper h3{
   padding: 0px 0px 0px 10px; 
 }
