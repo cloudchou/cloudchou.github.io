@@ -27,11 +27,11 @@
   height: 30px;
   margin-right: 8px;
   display: inline-block;
-  color: #fff;
+  color: #fff; 
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  -o-border-radius: 50%; 
   border-radius: 50%; 
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
@@ -50,7 +50,7 @@
   margin-bottom: 30px;
 }
 .main-wrapper .upper-row {
-  position: relative;
+  position: relative;  
   overflow: hidden;
   margin-bottom: 2px;
 }
