@@ -96,17 +96,28 @@
 
 .main-wrapper .project-title {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 0;
     margin-bottom: 5px;
 }
 
 .main-wrapper .projects-section .intro {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+}
+
+.main-wrapper .projects-section .intro p{
+    margin-bottom: 5px;
 }
 
 .main-wrapper .projects-section .item {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.main-wrapper .tech  h3{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-style: italic;
 }
 
 .sidebar-wrapper {
