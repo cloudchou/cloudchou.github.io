@@ -1,2 +1,2 @@
 # cloudchou.github.io
-个人博客
+[本人的博客网](http://www.cloudchou.com)
