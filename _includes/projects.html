@@ -57,4 +57,133 @@
             <p>搭建框架，实现核心的业务逻辑(任务调度，和PC端通信的逻辑，命令执行框架，部分命令逻辑)，任务分配 </p>
         </div>
     </div>
+    <!--//预研进程注入-->
+    <div class="item">
+        <div class="meta">
+            <div class="upper-row">
+                <h3 class="project-title">3. 预研进程注入</h3>
+                <div class="time">2015.5 - 2015.8</div>
+            </div>
+            <!--//upper-row-->
+        </div>
+        <!--//meta-->
+        <div class="intro">
+            <p>通过将我们自己编写的动态库注入至system_server进程，这个动态库就获得了system_server进程的权限，并且可以管理各种binder service对象，拦截各种binder service提供的服务，比如ActiivtyManagerService,PackageManagerService，这样就可以为手机版刷机精灵提供一些普通进程无法获得的功能: 卸载手刷时提醒用户确认是否卸载手刷，这样可以挽留用户；清除通知栏所有其他应用的通知，在做系统优化时可以用到；禁止第三方软件开启自启动</p>
+        </div>
+        <div class="tech">
+            <h3>技术要点:</h3>
+            <ol>
+                <li>通过ptrace实现动态库的注入</li>
+                <li>修改system_server使用的libandroid_runtime.so的GOT表，将GOT表中填写的BBinder:transact地址改成注入的动态库的入口地址，并保存BBinder:transact函数地址，需要时再通过这个地址调用BBinder:transact函数</li>
+        </div>
+    </div>
+    <!--//手刷和PC刷机精灵的云端刷机方案-->
+    <div class="item">
+        <div class="meta">
+            <div class="upper-row">
+                <h3 class="project-title">4. 手刷和PC刷机精灵的云端刷机方案</h3>
+                <div class="time">2014.4 - 2015.5</div>
+            </div>
+            <!--//upper-row-->
+        </div>
+        <!--//meta-->
+        <div class="intro">
+            <p>刷机精灵的核心功能是刷机，刷机最核心的技术是刷机方案，最核心的指标是刷机成功率和刷机效率。刷机方案放在云端这种架构使得刷机方案更新非常灵活，可随时更新刷机方案，带来了刷机成功率的迅速提升并且能快速满足运营需求</p>
+        </div>
+        <div class="tech">
+            <h3>技术要点:</h3>
+            <ol>
+                <li>刷机方案内部采用了模板方法，桥接模式，职责链模式来保证刷机流程，刷Recovery的方案的可扩展性，使得各个机型的刷机流程，刷Recovery的流程可灵活定制</li>
+                <li>快速提升成功率的方法论: 上报错误信息，分析各个错误占比，针对主要错误分析错误原因，然后制定解决方案，针对不明原因的错误则收集错误发生时的更多环境信息，发布版本后再进行分析</li>
+                <li>提升开发效率的诀窍: 测试流程一键化，可迅速验证修改的代码，智能代码提示，无须查阅文档，分级日志和分色显示日志工具快速定位错误原因</li>
+            </ol>
+        </div>
+        <div class="responsibility">
+            <h3>项目职责:</h3>
+            <p>主导云端方案的设计和实现</p>
+        </div>
+    </div>
+    <!--//底层Recovery定制及底层技术研究-->
+    <div class="item">
+        <div class="meta">
+            <div class="upper-row">
+                <h3 class="project-title">5. 底层Recovery定制及底层技术研究</h3>
+                <div class="time">2013.8 - 2014.3</div>
+            </div>
+            <!--//upper-row-->
+        </div>
+        <!--//meta-->
+        <div class="intro">
+            <p>在CM Recovery源码基础上定制刷机精灵的Recovery，定制刷机，系统备份，系统还原，清除数据，清除缓存等界面。优化并精简CM recovery的功能，定制刷机精灵需要的功能。改造了Android编译系统，支持多分辨率适配，可直接编译生成MTK机型的Recovery</p>
+        </div>
+        <div class="tech">
+            <h3>技术要点:</h3>
+            <ol>
+                <li>使用nx连接服务器，在服务器上开发，使用secure crt连接到开发服务器，进行编译，本地电脑安装虚拟机, 手机连接到本地电脑的虚拟机，每次修改Recovery源码后，可一键编译并测试新修改的逻辑是否有问题</li>
+                <li>改造CM的编译系统，使其支持Recovery的多分辨率适配，支持生成MTK机型的Recovery，支持小米手机的双系统切换，还添加了华为和Htc的充电模式检测。另外还编写了用于提取Device配置文件的Shell脚本，从手机里提取Device后，只需对配置文件做少量修改即可生成Recovery，提高了适配Recovery的效率</li>
+                <li>还实现了在Recovery模式下不重启就能直接刷机，还能汇报刷机状态给PC刷机精灵</li>
+                <li>深入研究了Recovery源码，init源码，adb源码，SELinux机制</li>
+            </ol>
+        </div>
+        <div class="responsibility">
+            <h3>项目职责:</h3>
+            <p>编译系统改造，Recovery开发，底层源码研究</p>
+        </div>
+    </div>
+    <!--//手机版刷机精灵-->
+    <div class="item">
+        <div class="meta">
+            <div class="upper-row">
+                <h3 class="project-title">6. 手机版刷机精灵</h3>
+                <div class="time">2012.11 - 2013.4</div>
+            </div>
+            <!--//upper-row-->
+        </div>
+        <!--//meta-->
+        <div class="intro">
+            <p>刷机精灵手机端的第1个版本，可查看ROM列表，ROM详情及评论，用户还可以下载ROM并刷机，但该项目并未上线</p>
+        </div>
+        <div class="tech">
+            <h3>技术要点:</h3>
+            <ol>
+                <li>软件架构采用MVC模式，将作为activity的controller放在同一个包，自定义view放在同一个包。业务逻辑按功能分类放在不同的包，所有请求服务器的json消息放在同一个包。图片缓存相关类放在同一个包，网络请求放在同一个包，刷机方案放在同一个包，下载引擎放在同一个包。</li>
+                <li>tab内容Activity采用模版方法模式设计，这些Activity继承自同一个父Activity，父Activity固定了如何生成整个tab页内容的算法，也就是说将标题栏和内容组合起来，子Activity类生成标题栏时，只需告知父Activity要显示的文字即可。这种设计减少了代码的重复，具有更好的可维护性</li>
+                <li>刷机方案的设计采用了模版方法模式和观察者模式，因为刷机步骤是固定的，只是某些具体的刷机步骤的实现会所有不同，所以采用模版方法。另外还设计了一个简单工厂，根据服务器下发的刷机方案，选择不同的刷机方案实现进行刷机。刷机方案执行时通过观察者模式通知界面层</li>
+                <li>图片缓存采用二级缓存，有文件缓存和内存缓存。先从网络把图片下载到本地，再将图片从本地加载到内存，内存对加载的图片所占用的总大小有限制，如果图片大小超过限制会使用LRU算法将图片从内存中移除。实现图片的内存缓存采用Map，并将图片名字，尺寸等参数作为key，而Bitmap作为value，从Map里移除某个Bitmap后，垃圾回收机制会自动回收Bitmap所使用的内存，并不需要调用system.gc()，如果担心不能及时回收的话，可用bitmap的recycle方法</li>
+                <li>可局部更新下载列表界面。更新ListView时，如果调用notifydatasetchanged会使得整个界面重绘，看起来像是滑动了界面一样。局部更新只需要在getview方法里使用map缓存位置即可，再用AdapterView的getFirstVisiblePosition得到位置，再计算出最终位置，再用viewGroup的getChildAt(position)即可得到任务所在的view，然后操作view的数据进行局部更新</li>
+            </ol>
+        </div>
+        <div class="responsibility">
+            <h3>项目职责:</h3>
+            <p>独立完成软件设计，并编写核心代码</p>
+        </div>
+    </div>
+    <!--//刷机精灵助手-->
+    <div class="item">
+        <div class="meta">
+            <div class="upper-row">
+                <h3 class="project-title">7. 刷机精灵助手</h3>
+                <div class="time">2011.12 - 2013.5</div>
+            </div>
+            <!--//upper-row-->
+        </div>
+        <!--//meta-->
+        <div class="intro">
+            <p>刷机精灵助手是PC端刷机精灵的辅助软件，运行在手机端，协助PC端刷机精灵完成联系人，短信，通话记录，应用数据备份以及还原功能，调用手机管家实现手机体检功能，提供ftp服务和检测系统更新等功能。</p>
+        </div>
+        <div class="tech">
+            <h3>技术要点:</h3>
+            <ol>
+                <li>采用MVC架构，只有一个简单的界面作为View,还有一个Activity作为控制层，业务模型比较复杂，既要实现和PC端刷机精灵通信，还要实现支持的PC端的命令逻辑。如果和PC端刷机精灵连接上了，将会让界面显示已连接，如果正在执行PC端刷机精灵的命令，则让界面显示正在执行命令</li>
+                <li>采用TCP和PC客户端通信，TCP Server在某个端口监听，PC端刷机精灵通过adb转发端口然后连接该端口，从而建立连接。精灵助手为每个连接建立一个命令队列，每个命令都在不同的线程执行，并有看门狗线程确保命令执行不超时</li>
+                <li>资料获取辅助类采用单例模式，针对2.2以下版本和2.2以上版本有不同的子类实现，通过反射实现单例</li>
+                <li>实现各种命令采用模版方法模式，设计了抽象类ClientCommand，在该类里固定了命令执行的算法，先调用执行时间统计的初始化操作，启动看门狗线程，最后统计命令执行时间。</li>
+                <li>添加新的命令，不需要修改现有代码。在解析通信协议生成命令对象时，采用反射机制，生成需要执行的命令的对象，所以不需要修改现有代码。真正实现了对修改封闭，对扩展开放</li>
+            </ol>
+        </div>
+        <div class="responsibility">
+            <h3>项目职责:</h3>
+            <p>项目初期独立完成软件设计及实现，上线后也负责维护并添加新功能。另外为了绕过授权管理软件，我还写实现了一个su程序，协助精灵助手获取Root权限</p>
+        </div>
+    </div>
 </section>
