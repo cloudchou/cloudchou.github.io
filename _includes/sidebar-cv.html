@@ -1,64 +1,43 @@
-<!-- Use icons from fontawesome when you are adding new item in the contact list  -->             
-
-                 
-     <div class="sidebar-wrapper">
-            <div class="profile-container">
-                <img class="profile" src="{{site.baseurl}}/assets/images/{% if site.pic %}{{ site.pic }}{% else %}profile1.png{% endif %}" alt="profile picture" />
-                <h1 class="name">{% if site.name %}{{site.name}}{% else %}Alan Doe{% endif %}</h1>
-                <h3 class="tagline">{% if site.tagline %}{{site.tagline}}{% else %}Android Developer{% endif %}</h3>
-            </div><!--//profile-container-->
-            
-            <div class="contact-container container-block">
-                <ul class="list-unstyled contact-list">
-                
-                    <li ><i class="fa fa-linkedin" aria-hidden="true"></i>正在看工作机会</li>
-
-                    <li ><i class="fa fa-briefcase" aria-hidden="true"></i> <a href="/about">简历</a></li>
-
-                    {% if site.qq %}
-                    <li class="qq"><i class="fa fa-qq"></i><a href="tencent://message/?uin={{site.qq}}&Site=cloudchou.com&Menu=yes" target="_blank">{{site.qq}}</a></li>
-                    {% else %}
-                     <li class="qq"><i class="fa fa-qq"></i><a href="tencent://message/?uin=515312382&Site=cloudchou.com&Menu=yes" target="_blank">515312382</a></li>
-                    {% endif %}
-
-                    {% if site.github %}
-                    <li class="github"><i class="fa fa-github"></i><a href="http://github.com/{{site.github}}" target="_blank">github.com/{{site.github}}</a></li>
-                    {% else %}
-                    <li class="github"><i class="fa fa-github"></i><a href="http://github.com/sharu725" target="_blank">github.com/sharu725</a></li>
-                    {% endif %}
-
-                    {% if site.website %}
-                    <li class="website"><i class="fa fa-globe"></i><a href="http://{{site.website}}" target="_blank">{{site.website}}</a></li>
-                    {% else %}
-                    <li class="website"><i class="fa fa-globe"></i><a href="http://blog.webjeda.com" target="_blank">blog.webjeda.com</a></li>
-                    {% endif %}                                    
-
-                    {% if site.email %}
-                    <li class="email"><i class="fa fa-envelope"></i><a href="mailto: {{site.email}}">{{site.email}}</a></li>
-                    {% else %}
-                    <li class="email"><i class="fa fa-envelope"></i><a href="mailto:alan.doe@website.com">alan.doe@website.com</a></li>
-                    {% endif %} 
-
-                    <li class="location"><i class="fa fa-location-arrow"></i> {{ site.location }}</li>
-                    
-
-                </ul>
-
-            </div><!--//contact-container-->
-
-            
-            <h3>热门博客</h3>
-            <div class="blog-list-container">           
-
-            <ul class="list-unstyled contact-list">
-             
-                <li > <a href="/android/post-276.html">Android编译系统</a></li> 
-                <li > <a href="/android/post-596.html">Binder机制</a></li> 
-                <li > <a href="/android/post-788.html">深入理解Activity启动流程</a></li>
-                <li > <a href="/android/post-925.html">Android单元测试利器</a></li>
-            </ul>
-
-            </div> <!-- 博客列表 -->
-        
-            
-        </div><!--//sidebar-wrapper-->
+<!-- Use icons from fontawesome when you are adding new item in the contact list  -->
+<div class="sidebar-wrapper">
+    <div class="profile-container">
+        <img class="profile" src="{{site.baseurl}}/assets/images/{% if site.pic %}{{ site.pic }}{% else %}profile1.png{% endif %}" alt="profile picture" />
+        <h1 class="name">{% if site.name %}{{site.name}}{% else %}Alan Doe{% endif %}</h1>
+        <h3 class="tagline">{% if site.tagline %}{{site.tagline}}{% else %}Android Developer{% endif %}</h3>
+    </div>
+    <!--//profile-container-->
+    <div class="contact-container container-block">
+        <ul class="list-unstyled contact-list">
+            <li><i class="fa fa-linkedin" aria-hidden="true"></i>考虑工作机会</li>
+            <li><i class="fa fa-briefcase" aria-hidden="true"></i> <a href="/about">简历</a></li>
+            {% if site.qq %}
+            <li class="qq"><i class="fa fa-qq"></i><a href="tencent://message/?uin={{site.qq}}&Site=cloudchou.com&Menu=yes" target="_blank">{{site.qq}}</a></li>
+            {% else %}
+            <li class="qq"><i class="fa fa-qq"></i><a href="tencent://message/?uin=515312382&Site=cloudchou.com&Menu=yes" target="_blank">515312382</a></li>
+            {% endif %} {% if site.github %}
+            <li class="github"><i class="fa fa-github"></i><a href="http://github.com/{{site.github}}" target="_blank">github.com/{{site.github}}</a></li>
+            {% else %}
+            <li class="github"><i class="fa fa-github"></i><a href="http://github.com/sharu725" target="_blank">github.com/sharu725</a></li>
+            {% endif %} {% if site.website %}
+            <li class="website"><i class="fa fa-globe"></i><a href="http://{{site.website}}" target="_blank">{{site.website}}</a></li>
+            {% else %}
+            <li class="website"><i class="fa fa-globe"></i><a href="http://blog.webjeda.com" target="_blank">blog.webjeda.com</a></li>
+            {% endif %} {% if site.email %}
+            <li class="email"><i class="fa fa-envelope"></i><a href="mailto: {{site.email}}">{{site.email}}</a></li>
+            {% else %}
+            <li class="email"><i class="fa fa-envelope"></i><a href="mailto:alan.doe@website.com">alan.doe@website.com</a></li>
+            {% endif %}
+            <li class="location"><i class="fa fa-location-arrow"></i> {{ site.location }}</li>
+        </ul>
+    </div>
+    <div class="blog-list-container container-block">
+        <h2 class="container-block-title">热门博客</h2>
+        <ul class="list-unstyled">
+            <li> <a href="/android/post-276.html">Android编译系统</a></li>
+            <li> <a href="/android/post-596.html">Binder机制</a></li>
+            <li> <a href="/android/post-788.html">深入理解Activity启动流程</a></li>
+            <li> <a href="/android/post-925.html">Android单元测试利器</a></li>
+        </ul>
+    </div>
+</div>
+<!--//sidebar-wrapper-->
