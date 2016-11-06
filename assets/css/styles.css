@@ -56,6 +56,14 @@
     margin-bottom: 60px;
 }
 
+.main-wrapper .section ol{
+    padding-left: 12px
+}
+
+.main-wrapper .section ol li{
+    margin-bottom: 5px
+}
+
 .main-wrapper .experiences-section .item {
     margin-bottom: 30px;
 }
