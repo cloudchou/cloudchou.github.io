@@ -16,12 +16,12 @@ js: ['sidebar.js']
 
             {% include carrier-profile.html %}
 
-            {% include skills.html %}
 
             {% include experience.html %}
 
             {% include projects.html %}
 
+            {% include skills.html %}
         </div>
 
 
