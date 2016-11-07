@@ -27,6 +27,7 @@ gems:
   - rouge
   - kramdown
   - jekyll-github-metadata
+  - jekyll-redirect-from
 
 # Build settings
 markdown: kramdown
