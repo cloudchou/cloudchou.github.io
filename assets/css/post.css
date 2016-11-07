@@ -94,18 +94,18 @@
 
 .dashang {
     display: block;
-    width: 100px;
+    width: 150px;
     margin: 5px auto;
-    height: 25px;
+    height: 50px;
     line-height: 25px;
     padding: 10px;
-    background-color: #E74851;
+    background-color: orange;
     color: #fff;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 24px;
     transition: all 0.3s;
 }
 
