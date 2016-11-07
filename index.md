@@ -34,8 +34,6 @@ redirect_from: /test.html
             <!-- Pagination -->
             {% include pagination.html %}
 
-            <!-- Comments -->
-            {% include disqus-comments.html %}
 
         </div>
 
