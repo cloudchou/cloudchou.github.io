@@ -22,6 +22,9 @@ css: ['sidebar-post-nav.css','post.css']
 
             {{ content }}
 
+            <!-- pay -->
+            {% include pay.html %}
+
             <!-- Comments -->
             {% include comments.html %}
         </div>
@@ -32,5 +35,6 @@ css: ['sidebar-post-nav.css','post.css']
         {% endif %}
 
     </div>
+
 
 </article>
