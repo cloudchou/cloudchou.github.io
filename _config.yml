@@ -60,8 +60,11 @@ kramdown:
       line_numbers: true
       start_line: 1  
 
-# Disque
+# duoshuo
 #disque: my_disque_settings # ex. httpdongchuangithubio.disqus.com
+
+duoshuo :
+  short_name : cloudchou2
 
 # Pagination
 paginate: 8
@@ -80,16 +83,3 @@ navs:
   -
     href: /about
     label: 关于
-
-
-# Google Analytics
-#analytics :
-#  provider : google
-#  google :
-#      tracking_id : 'tracking_id'  # ex. UA-72165600-X
-#      
-#  还需考虑的因素有:    
-#     1. 统计 
-#     2. 首页不显示生活随笔
-#     3. 分类显示
-#     4. 链接必须指向站内
