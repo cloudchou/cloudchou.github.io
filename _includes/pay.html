@@ -30,4 +30,9 @@ $(".pay_item").click(function() {
     $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "img.jpg");
     $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
 });
+
+function dashangToggle() {
+    $(".hide_box").fadeToggle();
+    $(".shang_box").fadeToggle();
+};
 </script>
