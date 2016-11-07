@@ -171,7 +171,7 @@
 .radiobox {
     width: 16px;
     height: 16px;
-    background: url('img/radio2.jpg');
+    background: url('/assets/images/radio2.jpg');
     display: block;
     float: left;
     margin-top: 5px;
@@ -179,7 +179,7 @@
 }
 
 .checked .radiobox {
-    background: url('img/radio1.jpg');
+    background: url('/assets/images/radio1.jpg');
 }
 
 .shang_payselect {
