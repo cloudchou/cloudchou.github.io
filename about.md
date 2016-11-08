@@ -2,7 +2,7 @@
 layout: default
 menu: home
 css: ['index.css', 'sidebar-cv.css','styles.css']
-js: ['sidebar.js']
+js: ['sidebar.js','404.js']
 ---
 
 {% include jumbotron.html %}
