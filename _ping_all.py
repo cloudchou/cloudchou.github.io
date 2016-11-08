@@ -40,5 +40,7 @@ def main():
     post_url = 'http://www.cloudchou.com/android/100855.html'
     rss_url = "http://www.cloudchou.com/feed.xml"
     ping_all(site_name, site_host, post_url, rss_url)
+    raw_input_B = raw_input("raw_input: ")
+    print(raw_input_B)
 
 main()
