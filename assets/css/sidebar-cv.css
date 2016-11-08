@@ -57,7 +57,7 @@
   font-size: 14px;
 }
 .sidebar-wrapper .container-block {
-  padding: 30px;
+  padding: 30px 15px 30px 15px;
 }
 
 
@@ -110,3 +110,6 @@
   margin-bottom: 0;
 }
 
+#ds-recent-comments li.ds-comment {
+  border-top: 0px !important;
+}
