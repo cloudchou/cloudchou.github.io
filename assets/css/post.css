@@ -150,19 +150,19 @@
 }
 
 .shang_payimg {
-    width: 140px;
-    padding: 10px;
-    /*border:6px solid #EA5F00;**/
+    width: 200px;
+    padding: 5px;
+    border:6px solid #EA5F00;
     margin: 0 auto;
     border-radius: 3px;
-    height: 140px;
+    height: 200px;
 }
 
 .shang_payimg img {
     display: block;
     text-align: center;
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
 }
 
 .pay_explain {
