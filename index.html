@@ -25,7 +25,7 @@ redirect_from: /test.html
                     </p>
                     <p class="post-list-meta">
                         <span class="octicon octicon-calendar"></span> <span class="meta_data">{{ post.date | date: "%Y/%m/%d" }}</span>
-                        <span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">
+                        <span id="{{ site.url }}{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">
                              <span class="post-meta-item-icon">
                                <span class="octicon octicon-eye"></span> 
                              </span>

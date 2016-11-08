@@ -9,6 +9,14 @@
                 {% if page.date %}
                 <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
                 {% endif %}
+                <span id="{{ site.url }}{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">
+                     <span class="post-meta-item-icon">
+                       <span class="octicon octicon-eye"></span> 
+                     </span>
+                     <span class="old-visitors-count">{{post.views|first}}</span>
+                     <span class="leancloud-visitors-count"></span>
+                     <span class="post-meta-item-text">次浏览</span>
+                </span>
             </span>
         </div>
     </div>

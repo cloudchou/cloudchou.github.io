@@ -68,6 +68,10 @@ kramdown:
 duoshuo :
   short_name : cloudchou2
 
+lean_cloud :
+  app_id   :  hQbdf5f1KrAGwtP4cXqprx7y-gzGzoHsz
+  app_key  :  7F5Wwjbvx11t0bBmyIgmtpy5
+
 # Pagination
 paginate: 8
 paginate_path: 'page:num'
