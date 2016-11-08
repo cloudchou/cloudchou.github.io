@@ -58,7 +58,7 @@
 /* 打赏界面样式 */
 
 .btn_shang{
-     border-top: 1px dashed #4183c4;
+     border-top: 1px solid rgba(0,0,0,0.13);
 }
 
 .hide_box {
@@ -100,22 +100,22 @@
     display: block;
     width: 150px;
     margin: 5px auto;
-    height: 50px;
+    height: 35px;
     line-height: 25px;
-    padding: 10px;
-    background-color: orange;
+    padding: 4px;
+    background-color: #f57e42;
     color: #fff;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     transition: all 0.3s;
 }
 
 .dashang:hover {
     opacity: 0.8;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
 }
 
