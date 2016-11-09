@@ -766,6 +766,9 @@
                     t += '<div class="ds-meta">' + et.userAnchor(a.theAuthor),
                     e.options.show_time && (t += et.timeText(a.created_at)),
                     t += "</div>",
+                    if(a.thread.url.search('www\.cloudchou\.com')==-1){
+                        a.thread.url=a.thread.url.replace("http://","http://www.cloudchou.com")
+                    }
                     t += e.options.show_title ? '<div class="ds-thread-title">在 <a href="' + u(a.thread.url) + '#comments">' + u(a.thread.title) + '</a> 中评论</div><div class="ds-excerpt">' + a.message + "</div>" : '<a class="ds-excerpt" title="' + a.thread.title + ' 中的评论" href="' + u(a.thread.url) + '#comments">' + a.message + "</a>",
                     t += "</li>";
             return t
