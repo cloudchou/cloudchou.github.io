@@ -1,7 +1,7 @@
 ---
 layout: default
 menu: home
-css: ['index.css', 'sidebar-cv.css','styles.css']
+css: ['index.css', 'sidebar-cv.css','about-cv.css']
 js: ['sidebar.js']
 ---
 
