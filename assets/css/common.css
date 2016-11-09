@@ -196,17 +196,17 @@
         width: inherit;
     }
 
-    #site-header-brand, #site-header-brand .octicon｛
-      font-size: 22px;
-    ｝ 
+    #site-header-brand, #site-header-brand .octicon{
+      font-size: 22px;   
+    }      
 
     .site-header-nav{
         float: left;
     }
 
-    .site-header-nav-item {
-       margin-left:  0px; 
-    }
+    .site-header-nav-item{
+       margin-left:  0px;  
+    }          
 
    /* .main-wrapper {
         padding: 30px;
