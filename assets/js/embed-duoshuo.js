@@ -765,7 +765,7 @@
                     e.options.show_avatars && (t += '<div class="ds-avatar">' + et.avatar(a.theAuthor, e.options.avatar_size) + "</div>"),
                     t += '<div class="ds-meta">' + et.userAnchor(a.theAuthor),
                     e.options.show_time && (t += et.timeText(a.created_at)),
-                    t += "</div>",
+                    t += "</div>";
                     if(a.thread.url.search('www\.cloudchou\.com')==-1){
                         a.thread.url=a.thread.url.replace("http://","http://www.cloudchou.com")
                     }
