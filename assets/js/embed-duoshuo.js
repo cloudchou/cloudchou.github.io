@@ -757,11 +757,11 @@
             var t = ""
               , s = e.list;
             if (s)
-                for (var a, i = -1, r = s.length - 1; r > i; ){
+                for (var a, i = -1, r = s.length - 1; r > i; ){                    
+                    a = s[i += 1];
                     if(a.thread.url.search('www\.cloudchou\.com')==-1){
-                        a.thread.url=a.thread.url.replace("http://","http://www.cloudchou.com")
+                        a.thread.url=a.thread.url.replace("http://","http://www.cloudchou.com");
                     }
-                    a = s[i += 1],
                     t += '<li class="ds-comment',
                     e.options.show_avatars && (t += " ds-show-avatars"),
                     t += '" data-post-id="' + a.post_id + '">',
