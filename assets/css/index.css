@@ -36,3 +36,7 @@
 .post-list-meta .meta_data {
     margin-right:20px !important;   
 }
+
+.post-list-meta .post-meta-item-text{
+    margin-left: -5px;
+}
