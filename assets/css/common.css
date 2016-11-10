@@ -206,12 +206,18 @@
 
     .site-header-nav-item{
        margin-left:  0px;  
-    }    
+    }            
 
     .jumbotron{
       padding-top: 20px !important;
       padding-bottom: 20px !important;        
     }
+
+    .geopattern{
+      padding-top: 20px !important;
+      padding-bottom: 0px !important;               
+    }  
+
 
     .site-header {
       margin:0px 0px 0px 0px;
@@ -243,6 +249,10 @@
 
    .jumbotron #jumbotron-meta-info {
      margin-top: 45px !important;
+   }
+
+   .post .row .col-md-4{
+       display:none
    }
 
    /* .main-wrapper {
