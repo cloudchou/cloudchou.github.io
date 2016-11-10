@@ -20,15 +20,15 @@ var windowScroll = function () {
             }
         }else{
             //如果是手机则将顶栏移除界面
-            // $('.site-header').addClass('site-header-nav-scrolled-ph');
-            if ($(window).scrollTop() <= 71) 
-            {
-                // $('.site-header').addClass('site-header-nav-scrolled-ph');
-                $('.site-header').css("margin-top",$(window).scrollTop()+"px");
-            } else {
-                // $('.site-header').removeClass('site-header-nav-scrolled-ph');
-                $('.site-header').css("margin-top","71px");
-            }
+            $('.site-header').addClass('site-header-nav-scrolled-ph');
+            // if ($(window).scrollTop() <= 71) 
+            // {
+            //     // $('.site-header').addClass('site-header-nav-scrolled-ph');
+            //     $('.site-header').css("margin-top",$(window).scrollTop()+"px");
+            // } else {
+            //     // $('.site-header').removeClass('site-header-nav-scrolled-ph');
+            //     $('.site-header').css("margin-top","71px");
+            // }
         }
  });
 };
