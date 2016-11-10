@@ -20,12 +20,13 @@ var windowScroll = function () {
             }
         }else{
             //如果是手机则将顶栏移除界面
-            if ($(window).scrollTop() > 0) 
-            {
-                $('.site-header').addClass('site-header-nav-scrolled-ph');
-            } else {
-                $('.site-header').removeClass('site-header-nav-scrolled-ph');
-            }
+            $('.site-header').addClass('site-header-nav-scrolled-ph');
+            // if ($(window).scrollTop() > 0) 
+            // {
+            //     $('.site-header').addClass('site-header-nav-scrolled-ph');
+            // } else {
+            //     $('.site-header').removeClass('site-header-nav-scrolled-ph');
+            // }
         }
  });
 };
