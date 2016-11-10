@@ -20,7 +20,7 @@ var windowScroll = function () {
             }
         }else{
             //如果是手机则将顶栏移除界面
-            if ($(window).scrollTop() > 70) 
+            if ($(window).scrollTop() > 0) 
             {
                 $('.site-header').addClass('site-header-nav-scrolled-ph');
             } else {
