@@ -33,6 +33,8 @@ redirect_from: /test.html
                              <span class="leancloud-visitors-count"></span>
                              <span class="post-meta-item-text">次浏览</span>
                         </span>
+                        <span class="octicon octicon-comments"></span> 
+                        <span class="ds-thread-count" data-thread-key="{{ post.title }}" data-count-type="comments"></span>
                     </p>
                 </li>
                 {% endfor %}
@@ -50,6 +52,21 @@ redirect_from: /test.html
         </div>
 
     </div>
+
+    <!-- 多说最新评论 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"cloudchou2"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src =  '/assets/js/embed-duoshuo.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+    <!-- 多说公共JS代码 end -->
 
 </section>
 
