@@ -55,7 +55,11 @@
                     var countSpan = $(element).find(COUNT_CONTAINER_REF);
                     if (countSpan.text() == '') {
                         var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
-                        countSpan.text(0+parseInt(oldCountSpan));
+                        if(oldCountSpan!=''){
+                            countSpan.text(0+parseInt(oldCountSpan));
+                        }else{
+                            countSpan.text(0);          
+                        }
                     }
                 }
             })
@@ -99,7 +103,11 @@
                     var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
                     var $element = $(document.getElementById(url));
                     var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
-                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                    if(oldCountSpan!=''){
+                        newcounter.set("time", parseInt(oldCountSpan)+1);
+                    }else{
+                        newcounter.set("time",  1);
+                    }
                     newcounter.save(null, {
                         success: function(newcounter) {
                             var $element = $(document.getElementById(url));
