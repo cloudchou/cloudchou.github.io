@@ -1246,6 +1246,9 @@
                 !1
             }
             function T(e) {
+                if(e.thread.url.search('www\.cloudchou\.com')==-1){
+                    e.thread.url=a.thread.url.replace("http://","http://www.cloudchou.com");
+                }    
                 var t = {
                     "unread-comments": {
                         title: "新留言及回复",
