@@ -30,6 +30,7 @@ gems:
   - jekyll-github-metadata
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-feed
 
 # Build settings
 markdown: kramdown
