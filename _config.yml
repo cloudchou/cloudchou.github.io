@@ -90,3 +90,6 @@ navs:
   -
     href: /about
     label: 关于
+  -
+    href: /feed.xml
+    label: 订阅
