@@ -1,33 +1,18 @@
 ---
-
 id: 980
-
 title: WordPress迁移Jekyll没那么简单
-
 date: 2016-11-15T11:55:06+08:00
-
 author: cloud
-
 layout: post
-
 guid: http://www.cloudchou.com/?p=980
-
 permalink: /work/post-980.html
-
 published: true
-
 categories:
-
   - work
-
 tags:
-
   - work
-
   - Jekyll
-
   - GitHub
-
 ---
 
 
