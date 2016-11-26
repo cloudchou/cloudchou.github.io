@@ -17,7 +17,7 @@ website: www.cloudchou.com
 url:  http://www.cloudchou.com
 github: cloudchou
 github_url: https://github.com/cloudchou
-description: 专注于Android软件开发的码农,带你深入分析Android系统.目前有Android编译系统系列,源码开发环境的搭建,native binder,framework binder,应用层binder的使用实例,后续还会详细分析binder的框架层库和本地层库,另外对Handler的实现原理和它在源码中的使用也做了详细分析。
+description: 专注于Android软件开发的码农,带你深入分析Android系统.目前的专题有Android编译系统,Binder机制，单元测试，深入理解Activity启动流程。
 favicon: favicon.png
 repository: cloudchou/cloudchou.github.io
 
