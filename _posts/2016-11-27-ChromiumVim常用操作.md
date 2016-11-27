@@ -1,7 +1,7 @@
 ---
 id: 973
 title: ChromiumVim常用操作
-date: 2016-11-11T08:51:59+08:00
+date: 2016-11-27T11:26:20+08:00
 author: cloud
 layout: post
 guid: http://www.cloudchou.com/?p=973
@@ -14,7 +14,7 @@ tags:
   - CVim常用操作
 ---
 
-ChromiumVim插件是Chrome的一个插件，也叫CVim，可以让你浏览网页时，用键盘代替鼠标进行操作，但是它的快捷键非常多，本篇只和大家分享使用该插件时的常用操作。
+ChromiumVim插件是Chrome的一个插件，也叫CVim，可以让你浏览网页时，用键盘代替鼠标进行操作，本篇只和大家分享使用该插件时的常用操作，熟练使用这些快捷键之后，大部分情况下就不需要再使用鼠标了。
 
 
 ##  背景
