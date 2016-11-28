@@ -1,7 +1,7 @@
 ---
 id: 984
 title: 如何在Openwrt上利用dnspod做动态域名解析
-date: 2016-11-27T22:17:39+08:00
+date: 2016-11-28T08:21:49+08:00
 author: cloud
 layout: post
 guid: http://www.cloudchou.com/?p=984
