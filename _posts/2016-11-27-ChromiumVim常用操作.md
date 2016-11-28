@@ -7,7 +7,7 @@ layout: post
 guid: http://www.cloudchou.com/?p=973
 permalink: /work/post-973.html
 categories:  
-  - 个人总结
+  - work
 tags:
   - 工作效率
   - ChromiumVim常用操作

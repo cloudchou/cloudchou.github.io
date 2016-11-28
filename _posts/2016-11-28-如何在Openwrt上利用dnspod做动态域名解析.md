@@ -5,7 +5,7 @@ date: 2016-11-28T08:21:49+08:00
 author: cloud
 layout: post
 guid: http://www.cloudchou.com/?p=984
-permalink: /android/post-984.html
+permalink: /work/post-984.html
 categories:
   - work
 tags:
