@@ -149,7 +149,7 @@ Openwrt有一个Dynamic DNS的插件可以支持动态域名解析，也就是dd
 
     ![ddns_settings](/assets/images/ddns_settings.png)
 
-    设置完毕后，碘酒Save & Apply，就可以关联成功了， 你测试一下把。 
+    设置完毕后，点击Save & Apply，就可以关联成功了， 你测试一下把。 
 
     系统的操作日志可以查看/var/log/ddns/myddns_ipv4.log。
 
