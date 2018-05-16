@@ -1,17 +1,17 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import xmlrpclib
+import xmlrpc.client
 
 
 def ping(ping_url, *args, **kwds):
     """args: site_name, site_host, post_url, rss_url."""
-    rpc_server = xmlrpclib.ServerProxy(ping_url)
-    result = rpc_server.weblogUpdates.extendedPing(*args)
-    print result
+    print('ping %s' % ping_url)
+    rpc_server = xmlrpc.client.ServerProxy(ping_url)
+    result = rpc_server.weblogUpdates..extendedPing(*args)
+    print(result)
 
 
-def ping_all(*args, **kwds):
+def pingAllSe(*args, **kwds):
     ping_url_list = [
         'http://ping.baidu.com/ping/RPC2',
         'http://blogsearch.google.com/ping/RPC2',
@@ -37,10 +37,12 @@ def ping_all(*args, **kwds):
 def main():
     site_name = "tech2ipo"
     site_host = "http://www.cloudchou.com"
-    post_url = 'http://www.cloudchou.com/android/100855.html'
+    post_url = 'http://www.cloudchou.com//web/post-994.html'
     rss_url = "http://www.cloudchou.com/feed.xml"
-    ping_all(site_name, site_host, post_url, rss_url)
-    raw_input_B = raw_input("raw_input: ")
-    print(raw_input_B)
+    pingAllSe(site_name, site_host, post_url, rss_url)
+    # raw_input_B = input("raw_input: ")
+    # print(raw_input_B)
 
-main()
+
+if __name__ == '__main__':
+    main()
