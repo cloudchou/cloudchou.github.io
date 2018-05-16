@@ -143,9 +143,7 @@ Visual Studio Code + Chrome 也可以调试，也能支持在Visual Studio Code�
 
 ### 调试
 
-1.  在npm script窗口双击start，启动web server
-
-2.  编辑调试配置，新建JavaScript调试配置，并设置要访问的url，以及Remote url配置，如下图所示:
+1.  编辑调试配置，新建JavaScript调试配置，并设置要访问的url，以及Remote url配置，如下图所示:
     
     ![webstorm_debug_vue_setting](../assets/blogimgs/webstorm_debug_vue_setting.gif)
 
@@ -155,13 +153,13 @@ Visual Studio Code + Chrome 也可以调试，也能支持在Visual Studio Code�
 
     保存好调试配置
 
-3.  启动server，可以使用WebStorm npm scripts中双击start启动server， 也可以在命令行中执行命令npm run start启动server
+2.  启动server，可以使用WebStorm npm scripts中双击start启动server， 也可以在命令行中执行命令npm run start启动server
 
-4.  点击debug，调试DebugTest，这时候会打开chrome，如下图所示   :
+3.  点击debug，调试DebugTest，这时候会打开chrome，如下图所示   :
 
     ![webstorm_debug_vue_start_debug](../assets/blogimgs/webstorm_debug_vue_start_debug.gif)
 
-5.  当我们在chrome中点击测试按钮，WebStorm就会想响应断点状态，如下图所示:
+4.  当我们在chrome中点击测试按钮，WebStorm就会响应断点状态，如下图所示:
 
     ![webstorm_debug_vue_breakpoint](../assets/blogimgs/webstorm_debug_vue_breakpoint.gif)
 
