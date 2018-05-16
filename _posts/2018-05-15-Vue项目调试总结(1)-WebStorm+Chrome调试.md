@@ -6,7 +6,6 @@ author: cloud
 layout: post
 guid: http://www.cloudchou.com/?p=993
 permalink: /web/post-993.html
-published: false
 categories:
   - web
 tags:
