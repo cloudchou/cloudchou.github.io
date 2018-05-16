@@ -11,6 +11,7 @@ categories:
 tags:
   - Vue
   - WebStorm调试Vue
+  - Vue调试
 ---
 
 Vue项目其实是可以调试的，刚接触Vue项目开发时，在网上搜了一堆关于Vue项目调试的资料，发现网上都说比较难搞，也没有一个方案能走得通。都快要放弃了，后来试验了Vue官方推荐的使用vscode+chrome的调试方案，发现其实是可以走得通的。并且WebStorm+chrome也可以调试Vue项目。
