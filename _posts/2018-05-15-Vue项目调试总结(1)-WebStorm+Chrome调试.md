@@ -12,11 +12,11 @@ tags:
   - web
 ---
 
-# Vue项目调试总结
-
 Vue项目其实是可以调试的，刚接触Vue项目开发时，在网上搜了一堆关于Vue项目调试的资料，发现网上都说比较难搞，也没有一个方案能走得通。都快要放弃了，后来试验了Vue官方推荐的使用vscode+chrome的调试方案，发现其实是可以走得通的。
 
 我最喜欢的前端开发IDE还是IDEA家族的WebStorm，网上也是各种说不可以使用WebStorm+Chrome进行调试，后来在官网看到WebStorm+Chrome其实可以调试React应用，理论上来说React应用也是使用webpack打包，如果React可以用WebStorm+Chrome进行调试，那么Vue应用应该也可以，最终通过官方指引实验了一下WebStorm+Chrome调试Vue应用，发现其实是可以行的通的。
+
+# Vue项目调试总结
 
 ## 理想的调试环境
 
