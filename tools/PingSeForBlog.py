@@ -43,7 +43,7 @@ def pingSeForBlog(blogTitle):
     postRealLink = "http://www.cloudchou.com" + postLinkStr
     print(postRealLink)
     # pingAllSeCmd = '%s/PingAllSe.py' % (scriptDir)
-    siteName = "tech2ipo"
+    siteName = "Cloud Chou's Tech Blog"
     siteHost = "http://www.cloudchou.com"
     # postUrl = 'http://www.cloudchou.com/android/100855.html'
     rssUrl = "http://www.cloudchou.com/feed.xml"
