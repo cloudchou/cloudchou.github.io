@@ -1,3 +1,4 @@
+#!/usr/local/opt/python/libexec/bin/python
 # -*- coding: utf8 -*-
 import datetime
 import time
@@ -7,12 +8,14 @@ import codecs
 import os
 import sys
 import string
+import argparse
 
 # reload(sys)
 # sys.setdefaultencoding('utf-8')  # 允许打印unicode字符
 
 scriptDir = os.path.split(os.path.realpath(__file__))[0]
 postDir = scriptDir + '/..//_posts'
+blogDir = scriptDir + '/../'
 
 
 def getFileContent(filename):
@@ -24,6 +27,7 @@ def getFileContent(filename):
 def writeFileContent(filepath, content):
     with codecs.open(filepath, 'w', 'utf-8') as f:
         f.writelines(content)
+
 
 def getMaxPostId(postDir):
     files = os.listdir(postDir)
@@ -84,9 +88,24 @@ def createBlog(blogTitle):
 
 
 def main():
-    blogTitle = input("请输入文章标题：")
+    parser = argparse.ArgumentParser(
+        description="New Blog Tool")  # description参数可以用于插入描述脚本用途的信息，可以为空
+    parser.add_argument('--title', '-t', help='blog title')
+    parser.add_argument(
+        '--silent', '-s', action='store_true', help='not open it ?')
+    args = parser.parse_args()
+    if not args.title:
+        blogTitle = input("请输入文章标题：")
+    else:
+        blogTitle = args.title
+    print('blog title : %s' % blogTitle)
     blogFilePath = createBlog(blogTitle)
-    os.system('code %s' % blogFilePath)
+    if args.silent:
+        print('no need to open %s' % blogFilePath)
+    else:
+        print('need to open %s' % blogFilePath)
+        os.system('code %s' % blogDir)
+        os.system('code %s' % blogFilePath)
 
 
 if __name__ == '__main__':

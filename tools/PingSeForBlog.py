@@ -1,10 +1,13 @@
+#!/usr/local/opt/python/libexec/bin/python
+
 import time
 import functools
 import codecs
 import re
 import os
-import PingAllSe
 import sys
+import argparse
+import PingAllSe
 
 scriptDir = os.path.split(os.path.realpath(__file__))[0]
 postDir = scriptDir + '/..//_posts'
@@ -26,7 +29,7 @@ def getFileContent(filePath):
         return f.readlines()
 
 
-def publishBlog(blogTitle):
+def pingSeForBlog(blogTitle):
     filePath = getBlogFilePath(blogTitle)
     if filePath == '':
         print('can not find blog')
@@ -48,8 +51,16 @@ def publishBlog(blogTitle):
 
 
 def main():
-    blogTitle = input("请输入文章标题：")
-    publishBlog(blogTitle)
+    parser = argparse.ArgumentParser(
+        description="New Blog Tool")  # description参数可以用于插入描述脚本用途的信息，可以为空
+    parser.add_argument('--title', '-t', help='blog title')
+    args = parser.parse_args()
+    if not args.title:
+        blogTitle = input("请输入文章标题：")
+    else:
+        blogTitle = args.title
+    print('blog title : %s' % blogTitle)
+    pingSeForBlog(blogTitle)
 
 
 if __name__ == '__main__':

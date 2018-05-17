@@ -7,7 +7,7 @@ def ping(ping_url, *args, **kwds):
     """args: site_name, site_host, post_url, rss_url."""
     print('ping %s' % ping_url)
     rpc_server = xmlrpc.client.ServerProxy(ping_url)
-    result = rpc_server.weblogUpdates..extendedPing(*args)
+    result = rpc_server.weblogUpdates.extendedPing(*args)
     print(result)
 
 
