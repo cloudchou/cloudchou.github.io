@@ -24,11 +24,7 @@ tags:
 
 1.  在VSCode中安装插件[Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 
-2.  创建demo项目
-
-    ```bash
-    vue init webpack vuejs-webpack-project
-    ``` 
+2.  创建demo项目`vue init webpack vuejs-webpack-project`
 
 3.  修改source map
 

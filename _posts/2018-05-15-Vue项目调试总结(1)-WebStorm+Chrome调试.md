@@ -84,11 +84,7 @@ Visual Studio Code + Chrome 也可以调试，也能支持在Visual Studio Code�
 
 1.  在chrome中安装插件 [JetBrains IDE Support](https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji)
 
-2.  创建demo项目
-
-    ```bash
-    vue init webpack vuejs-webpack-project
-    ``` 
+2.  创建demo项目`vue init webpack vuejs-webpack-project`
 
 3.  修改source map
 
