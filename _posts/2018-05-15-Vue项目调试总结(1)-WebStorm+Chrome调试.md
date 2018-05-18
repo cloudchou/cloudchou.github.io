@@ -111,7 +111,7 @@ Visual Studio Code + Chrome 也可以调试，也能支持在Visual Studio Code�
 
 4.  添加测试代码 修改src/components/HelloWorld.vue
 
-    ```html
+    ```vue
     <template>
     <div class="hello">
       <!-- .... -->

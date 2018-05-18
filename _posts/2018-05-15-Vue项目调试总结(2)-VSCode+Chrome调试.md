@@ -51,7 +51,7 @@ tags:
 
 4.  添加测试代码 修改src/components/HelloWorld.vue
 
-    ```html
+    ```vue
     <template>
     <div class="hello">
       <!-- .... -->
@@ -87,9 +87,7 @@ tags:
 
     ```json
     {
-        // Use IntelliSense to learn about possible attributes.
-        // Hover to view descriptions of existing attributes.
-        // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+        //...
         "version": "0.2.0",
         "configurations": [
             {

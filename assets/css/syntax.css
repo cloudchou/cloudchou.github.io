@@ -1,224 +1,147 @@
-.highlighter-rouge .highlight{
-  padding:8px;
-  background-color: #f7f7f7;
-}
-.markdown-body table{
-  background: #f7f7f7;
-} 
-.markdown-body table tr{
-  background: #f7f7f7;
-}
-.highlight table td {padding: 0px;}
-.highlight table pre { margin: 0; }
-.highlight table td[class='gutter gl'] {  
-  border-right: 1px dotted #888888;
-  padding-right: 5px;
-}
-.highlight table td[class='gutter gl'] pre{
-  color:#888888;
+/*modified jekyll theme moder list */
+
+code,
+pre {
+    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+    font-size: 12px;
+    overflow-x: auto;
+    padding: 2px
+    /* background: #3A3C42; */
 }
 
-.highlight table td[class='code'] {
-  padding-left: 5px;
-}
-.markdown-body table td{
- border: 0px solid #ddd;
-}
-.markdown-body table td pre{
- border: 0px solid #ddd;
+.highlight table .lineno {
+    text-align: right;
 }
 
-.markdown-body .highlight pre{
-  background-color: #f7f7f7;
-  padding: 16px;
+/*jeky theme modernist:https://github.com/pages-themes/modernist/blob/master/_sass/rouge-base16-dark.scss */
+
+.highlight table td {
+    padding: 5px;
 }
 
-.markdown-body .highlight td pre {
-    padding: 0px;
+.highlight table pre {
+    margin: 0;
+}
+
+.highlight,
+.highlight .w {
+    color: #d0d0d0;
+}
+
+.highlight .err {
+    color: #151515;
+    background-color: #ac4142;
+}
+
+.highlight .c,
+.highlight .cd,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
+    color: #888;
+}
+
+.highlight .cp {
+    color: #f4bf75;
+}
+
+.highlight .nt {
+    color: #f4bf75;
+}
+
+.highlight .o,
+.highlight .ow {
+    color: #d0d0d0;
+}
+
+.highlight .p,
+.highlight .pi {
+    color: #d0d0d0;
+}
+
+.highlight .gi {
+    color: #90a959;
+}
+
+.highlight .gd {
+    color: #ac4142;
 }
 
 .highlight .gh {
-  color: #999999;
+    color: #6a9fb5;
+    font-weight: bold;
 }
-.highlight .sr {
-  color: #f6aa11;
+
+.highlight .k,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kv {
+    color: #aa759f;
 }
-.highlight .go {
-  color: #888888;
-}
-.highlight .gp {
-  color: #555555;
-}
-.highlight .gs {
-}
-.highlight .gu {
-  color: #aaaaaa;
-}
-.highlight .nb {
-  color: #f6aa11;
-}
-.highlight .cm {
-  color: #75715e;
-}
-.highlight .cp {
-  color: #75715e;
-}
-.highlight .c1 {
-  color: #75715e;
-}
-.highlight .cs {
-  color: #75715e;
-}
-.highlight .c, .highlight .cd {
-  color: #75715e;
-}
-.highlight .err {
-  color: #960050;
-}
-.highlight .gr {
-  color: #960050;
-}
-.highlight .gt {
-  color: #960050;
-}
-.highlight .gd {
-  color: #49483e;
-}
-.highlight .gi {
-  color: #49483e;
-}
-.highlight .ge {
-  color: #49483e;
-}
+
 .highlight .kc {
-  color: #0086b3;
+    color: #d28445;
 }
-.highlight .kd {
-  color: #a71d5d;
-}
-.highlight .kr {
-  color: #66d9ef;
-}
-.highlight .no {
-  color: #66d9ef;
-}
+
 .highlight .kt {
-  color: #a71d5d;
+    color: #d28445;
 }
-.highlight .mf {
-  color: #ae81ff;
+
+.highlight .kd {
+    color: #d28445;
 }
-.highlight .mh {
-  color: #ae81ff;
-}
-.highlight .il {
-  color: #ae81ff;
-}
-.highlight .mi {
-  color: #ae81ff;
-}
-.highlight .mo {
-  color: #ae81ff;
-}
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff;
-}
-.highlight .sc {
-  color: #ae81ff;
-}
-.highlight .se {
-  color: #ae81ff;
-}
-.highlight .ss {
-  color: #ae81ff;
-}
-.highlight .sd {
-  color: #e6db74;
-}
-.highlight .s2 {
-  color: #e6db74;
-}
-.highlight .sb {
-  color: #e6db74;
-}
-.highlight .sh {
-  color: #e6db74;
-}
-.highlight .si {
-  color: #e6db74;
-}
-.highlight .sx {
-  color: #e6db74;
-}
+
+.highlight .s,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .sh,
+.highlight .sx,
 .highlight .s1 {
-  color: #183691;
+    color: #90a959;
 }
-.highlight .s {
-  color: #183691;
+
+.highlight .sr {
+    color: #75b5aa;
 }
-.highlight .na {
-  color: #333;
+
+.highlight .si {
+    color: #8f5536;
 }
-.highlight .nc {
-  color: #795da3;
+
+.highlight .se {
+    color: #8f5536;
 }
-.highlight .nd {
-  color: #a71d5d;
-}
-.highlight .ne {
-  color: #a6e22e;
-}
-.highlight .nf {
-  color: #795da3;
-}
-.highlight .vc {
-  color: #ffffff;
-}
+
 .highlight .nn {
-  color: #ffffff;
+    color: #f4bf75;
 }
-.highlight .nl {
-  color: #ffffff;
+
+.highlight .nc {
+    color: #f4bf75;
 }
-.highlight .ni {
-  color: #ffffff;
+
+.highlight .no {
+    color: #f4bf75;
 }
-.highlight .bp {
-  color: #ffffff;
+
+.highlight .na {
+    color: #6a9fb5;
 }
-.highlight .vg {
-  color: #ffffff;
+
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo,
+.highlight .mb,
+.highlight .mx {
+    color: #90a959;
 }
-.highlight .vi {
-  color: #ffffff;
-}
-.highlight .nv {
-  color: black;
-}
-.highlight .w {
-  color: #ffffff;
-}
-.highlight {
-  color: #ffffff;
-}
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #333;
-}
-.highlight .ow {
-  color: #f92672;
-}
-.highlight .nt {
-  color: #f92672;
-}
-.highlight .k, .highlight .kv {
-  color: #a71d5d;
-}
-.highlight .kn {
-  color: #f92672;
-}
-.highlight .kp {
-  color: #f92672;
-}
-.highlight .o {
-  color: #f92672;
+
+.highlight .ss {
+    color: #90a959;
 }
