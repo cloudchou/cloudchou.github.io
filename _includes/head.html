@@ -26,4 +26,9 @@
     <!-- CSS set in layout -->
     {% for css in layout.css %}
     <link rel="stylesheet" href="/assets/css/{{css}}"> {% endfor %} 
+
+    {% if page.title %}
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    {% endif %}
 </head>

@@ -9,8 +9,18 @@ pre {
     /* background: #3A3C42; */
 }
 
+/* 调整行号显示 */
+
 .highlight table .lineno {
     text-align: right;
+}
+
+.highlight table td.rouge-gutter.gl {
+    background-color: #eff2f3;
+}
+
+.highlight table td.rouge-gutter.gl pre {
+    color: #869194;
 }
 
 /*jeky theme modernist:https://github.com/pages-themes/modernist/blob/master/_sass/rouge-base16-dark.scss */

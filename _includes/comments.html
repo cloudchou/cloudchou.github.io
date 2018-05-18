@@ -1,18 +1,24 @@
-<div id="" >
+<!-- <div id="" >
  <a name="comments"></a>
  <div id="ds-thread" class="ds-thread" data-url="{{ site.url }}{{ page.url }}" data-title="{{ page.title }}" data-thread-key="{{ page.title }}"></div>
-</div>
-
+</div> -->
+<div id="comments"></div>
 <script type="text/javascript">
-var duoshuoQuery = {
-    short_name: '{{ site.duoshuo.short_name }}'
-};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
+    const gitment = new Gitment({
+        id: 'cloudchou', // optional
+        owner: 'cloudchou',
+        repo: 'cloudchou.github.io',
+        oauth: {
+            client_id: '75871125e1e6981277ca',
+            client_secret: '691b6909e486ac7d0959d22ce2fac505941cb66a',
+        },
+        // ...
+        // For more available options, check out the documentation below
+    })
+    gitment.render('comments')
 </script>
+
+
+<!-- comment -->
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
