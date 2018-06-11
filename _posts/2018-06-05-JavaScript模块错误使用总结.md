@@ -226,8 +226,24 @@ module.exports = {
 因为加载`weixin-js-sdk`时，会为`window.jWeixin`赋值，所以externals配置中`weixin-js-sdk`配置项的值是`jWexin`，其实将jWeixin改成wx也是可以正常工作的，因为weixin-js-sdk也为window.wx赋了值
 
 
+### webpack项目调试时import的变量不可evaluate
 
+前端代码调试时 import的名字不可以直接用于evaluate 表达式
 
+比如有代码:
+import moment from 'moment'
+let dateStr = moment(endTime).format('YYYY-MM-DD')
+我们调试时，如果在上一句代码处打断点, 然后运行到此处时，如果evaluate表达式moment，会得到undefined的结果
+
+![javascript_debug](/assets/blogimgs/javascript_debug.png)
+
+但实际上上述代码可以正常执行
+
+![javascript_normal_execute](/assets/blogimgs/javascript_normal_execute.png)
+
+通过观察闭包的变量，moment对应的执行时的函数__WEBPACK_IMPORTED_MODULE_3_moment___default
+
+所以下次遇到这样的问题时，不要再怀疑代码有问题了
 
 ## 参考资料
 
